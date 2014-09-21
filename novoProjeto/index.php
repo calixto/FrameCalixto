@@ -11,6 +11,7 @@ date_default_timezone_set('America/Sao_Paulo');
 set_time_limit(0);
 //Lendo o arquivo XML de definições de diretórios e arquivos
 $definicoes = simplexml_load_file('.sistema/xml/definicoes.xml');
+define('DIRAPP',dirname(__FILE__));
 $dirCalixto = strval($definicoes->classes->classe[0]['dir']);
 //Carrregando as classes de definições e erros
 include_once($dirCalixto.'definicoes/include.php');

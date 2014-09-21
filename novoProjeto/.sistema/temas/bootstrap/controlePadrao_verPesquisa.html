@@ -5,13 +5,12 @@
 		<h4 class="fc-titulo-especifico">«$tituloEspecifico»</h4>
 		<div class="fc-campo-grupo">
 			<div class="fc-campo-subgrupo">
-				«php»
-				foreach($this->_tpl_vars['componentes padroes'] as $componente){
-				echo "\t\t\t<div class='fc-campo'>\n";
-					echo "\t\t\t\t<label for='{$componente->pegarId()}'>{$this->_tpl_vars['nome'.ucfirst($componente->pegarId())]}:</label>\n";
-					echo "\t\t\t\t<span>{$componente}</span>\n";
-					echo "\t\t\t</div>\n";
-				}«/php»
+				«foreach $___componentesPadroes as $componente »
+				<div class='fc-campo'>
+					<label for='«$componente->pegarId()»'>«$componente|inter:'nome'»</label>
+					<span>«$componente»</span>
+				</div>
+				«/foreach»
 			</div>
 			<div class="fc-menu-corpo">
 				«$menuPrograma»
