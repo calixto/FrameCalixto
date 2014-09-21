@@ -36,9 +36,9 @@
 			<li>Objetos de Banco de Dados
 				<ol>
 					<div class="contador">
-						«php»foreach($this->_tpl_vars['tabelas'] as $this->_tpl_vars['dados']):«/php»
+						«foreach $tabelas as $dados »
 						<li>«$dados.tabela.nome»
-							«php»$this->_tpl_vars['constraints'] = false;«/php»
+							«assign var="constraints" value="0"»
 							<div class="lista fc-listagem-grupo descricao-tabela" >
 								<h4 class="fc-listagem-titulo">Detalhe da tabela</h4>
 								<div class="fc-listagem">
@@ -57,7 +57,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											«php» foreach($this->_tpl_vars['dados']['campos'] as $this->_tpl_vars['campo']): «/php»
+											«foreach $dados.campos as $campo »
 											<tr title="«$campo.descricao»" class="«cycle values='fc-linha fc-linha1,fc-linha fc-linha2'»">
 												<td class="campo1">«$campo.tipo_de_dado»</td>
 												<td class="campo1">«$campo.campo»</td>
@@ -69,13 +69,13 @@
 												<td class="campo1">«$campo.descricao»</td>
 											</tr>
 											«if $campo.tabela_fk»
-											«php»$this->_tpl_vars['constraints'][$this->_tpl_vars['campo']['campo']]['campo']=$this->_tpl_vars['campo']['campo'];«/php»
-											«php»$this->_tpl_vars['constraints'][$this->_tpl_vars['campo']['campo']]['constraint']=$this->_tpl_vars['campo']['constraint'];«/php»
-											«php»$this->_tpl_vars['constraints'][$this->_tpl_vars['campo']['campo']]['esquema_fk']=$this->_tpl_vars['campo']['esquema_fk'];«/php»
-											«php»$this->_tpl_vars['constraints'][$this->_tpl_vars['campo']['campo']]['tabela_fk']=$this->_tpl_vars['campo']['tabela_fk'];«/php»
-											«php»$this->_tpl_vars['constraints'][$this->_tpl_vars['campo']['campo']]['campo_fk']=$this->_tpl_vars['campo']['campo_fk'];«/php»
+											«*php»$this->_tpl_vars['constraints'][$this->_tpl_vars['campo']['campo']]['campo']=$this->_tpl_vars['campo']['campo'];«/php*»
+											«*php»$this->_tpl_vars['constraints'][$this->_tpl_vars['campo']['campo']]['constraint']=$this->_tpl_vars['campo']['constraint'];«/php*»
+											«*php»$this->_tpl_vars['constraints'][$this->_tpl_vars['campo']['campo']]['esquema_fk']=$this->_tpl_vars['campo']['esquema_fk'];«/php*»
+											«*php»$this->_tpl_vars['constraints'][$this->_tpl_vars['campo']['campo']]['tabela_fk']=$this->_tpl_vars['campo']['tabela_fk'];«/php*»
+											«*php»$this->_tpl_vars['constraints'][$this->_tpl_vars['campo']['campo']]['campo_fk']=$this->_tpl_vars['campo']['campo_fk'];«/php*»
 											«/if»
-											«php»endforeach;«/php»
+											«/foreach»
 									</table>
 								</div>
 								«if $constraints»
@@ -91,14 +91,14 @@
 										</tr>
 									</thead>
 									<tbody>
-										«php» foreach($this->_tpl_vars['constraints'] as $this->_tpl_vars['constraint']): «/php»
+										«foreach $constraints as $constraint »
 										<tr title="«$campo.descricao»" class="«cycle values='fc-linha fc-linha1,fc-linha fc-linha2'»">
 											<td class="campo1">«$constraint.campo»</td>
 											<td class="campo1">«$constraint.constraint»</td>
 											<td class="campo1">«$constraint.esquema_fk».«$constraint.tabela_fk»</td>
 											<td class="campo1">«$constraint.campo_fk»</td>
 										</tr>
-										«php»endforeach;«/php»
+										«/foreach»
 								</table>
 								«/if»
 								«if $dados.restricoes»
@@ -112,19 +112,19 @@
 										</tr>
 									</thead>
 									<tbody>
-										«php» foreach($this->_tpl_vars['dados']['restricoes'] as $this->_tpl_vars['restricao']): «/php»
+										«foreach $dados.restricoes as $restricao »
 										<tr class="«cycle values='linhaListagem1,linhaListagem2'»">
 											<td class="campo1">«$restricao.nome»</td>
 											<td class="campo1">«$restricao.condicao»</td>
 											<td class="campo1">«$restricao.descricao»</td>
 										</tr>
-										«php»endforeach;«/php»
+										«/foreach»
 								</table>
 								«/if»
 							</div>
 							<br/>
 						</li>
-						«php»endforeach;«/php»
+						«/foreach»
 					</div>
 				</ol>
 			</li>

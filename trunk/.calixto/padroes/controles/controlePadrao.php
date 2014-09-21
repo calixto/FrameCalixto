@@ -543,10 +543,14 @@ class controlePadrao extends controle{
 				}
 				if($nome != $negocio->nomeChave()) {
 					if($visualizacao->{' pesquisa '} && $opcoes['pesquisa']){
-						$visualizacao->_tpl_vars['componentes padroes'][] = $visualizacao->$nome;
+						$ar = $visualizacao->___componentesPadroes;
+						$ar[] = $visualizacao->$nome;
+						$visualizacao->___componentesPadroes = $ar;
 					}
 					if($visualizacao->{' edicao '} && $opcoes['edicao']){
-						$visualizacao->_tpl_vars['componentes padroes'][] = $visualizacao->$nome;
+						$ar = $visualizacao->___componentesPadroes;
+						$ar[] = $visualizacao->$nome;
+						$visualizacao->___componentesPadroes = $ar;
 					}
 				}
 			}
