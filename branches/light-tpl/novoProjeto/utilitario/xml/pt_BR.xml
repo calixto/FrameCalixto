@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding="utf-8" ?>
+<internacionalizacao>
+	<entidade>
+		<nome>Utilitario</nome>
+	</entidade>
+	<controles>
+		<titulo>Utilitários</titulo>
+		<textos>
+			<!-- Textos para a pesquisa geral -->
+			<texto id="verPesquisaGeral">Pesquisa geral</texto>
+			<!-- Textos para o gerador de cadastros -->
+			<texto id="verGeradorEntidade">Gerador de Cadastros</texto>
+			<texto id="verListarEntidade">Entidades do Sistema</texto>
+			<texto id="verListarTabelas">Tabelas do Banco</texto>
+			<texto id="verListarCamposTabela">Campos da tabela: </texto>
+			<texto id="verImportador">Importador de dados</texto>
+			<texto id="ajudaDefinicao">Defina o nome da entidade e suas propriedades ou atributos e clique em [definir].</texto>
+			<texto id="adicionar">adicionar</texto>
+
+			<!-- Textos para o instalador de sistema -->
+			<texto id="geradorDefinirSistema">Configurador do Sistema</texto>
+			<!-- Sistema -->
+			<texto id="sistema">Configurações de Sistema</texto>
+			<texto id="nomeSessao">Nome da Sessão</texto>
+			<texto id="paginaInicial">Página inicial do sistema</texto>
+			<texto id="paginaErro">Página de erro do sistema</texto>
+			<texto id="ambiente">Ambiente do sistema</texto>
+			<texto id="ambiente3">Desenvolvimento</texto>
+			<texto id="ambiente2">Homologação</texto>
+			<texto id="ambiente1">Produção</texto>
+			<!-- Controle de Acesso -->
+			<texto id="controleAcesso">Configurações de Controle de Acesso</texto>
+			<texto id="liberadoCA">Controle de acesso liberado</texto>
+			<texto id="classeCA">Classe de Controle de Acesso</texto>
+			<texto id="metodoCA">Método de Controle de Acesso</texto>
+			<!-- Controle de Menu -->
+			<texto id="controleMenu">Configurações do Controle de Menu</texto>
+			<texto id="classeMenu">Classe de menu</texto>
+			<texto id="metodoMenuPrincipal">Método de menu principal</texto>
+			<texto id="metodoMenuSistema">Método de menu do sistema</texto>
+			<!-- Bancos -->
+			<texto id="bancos">Configurações de Bancos</texto>
+			<!-- Diretórios -->
+			<texto id="diretorios">Configurações de diretórios</texto>
+			<!-- Arquivos -->
+			<texto id="arquivos">Configurações de arquivos</texto>
+			<!--Importador-->
+			<texto id="ajudaImportador">Dados para a importação no formato xml com encoding utf-8</texto>
+			
+
+		</textos>
+	</controles>
+	<mensagens>
+		<mensagem id="importarSucesso">Dados importados com sucesso!</mensagem>
+	</mensagens>
+</internacionalizacao>

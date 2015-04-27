@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<internacionalizacao>
+	<entidade>
+		<nome>Pessoa</nome>
+		<propriedades>
+		<propriedade nome='idPessoa'>
+			<nome>Código</nome>
+			<abreviacao>Cód.</abreviacao>
+			<descricao>Informe o código</descricao>
+		</propriedade>
+		<propriedade nome='csPessoa'>
+			<nome>Tipo</nome>
+			<abreviacao>Tipo Pessoa</abreviacao>
+			<descricao>Informe o tipo da pessoa</descricao>
+			<dominio>
+				<opcao id='FI'>Física Interna</opcao>
+				<opcao id='FE'>Física Externa</opcao>
+				<opcao id='JI'>Jurídica Interna</opcao>
+				<opcao id='JE'>Jurídica Externa</opcao>
+			</dominio>
+		</propriedade>
+		<propriedade nome='nmPessoa'>
+			<nome>Nome</nome>
+			<abreviacao>Nome</abreviacao>
+			<descricao>Informe o nome da pessoa</descricao>
+		</propriedade>
+		<propriedade nome='nrDocumento'>
+			<nome>CPF/CNPJ</nome>
+			<abreviacao>CPF/CNPJ</abreviacao>
+			<descricao>Informe o CPF/CNPJ</descricao>
+		</propriedade>
+		<propriedade nome='nrCep'>
+			<nome>CEP</nome>
+			<abreviacao>CEP</abreviacao>
+			<descricao>Informe o CEP</descricao>
+		</propriedade>
+		<propriedade nome='nrTelefone'>
+			<nome>Telefone</nome>
+			<abreviacao>Tel.</abreviacao>
+			<descricao>Informe o telefone</descricao>
+		</propriedade>
+		<propriedade nome='nrTelefone2'>
+			<nome>Celular</nome>
+			<abreviacao>Cel.</abreviacao>
+			<descricao>Informe o celular</descricao>
+		</propriedade>
+		<propriedade nome='nrTelefone3'>
+			<nome>Telefone Aux.</nome>
+			<abreviacao>Tel. Aux.</abreviacao>
+			<descricao>Informe o telefone</descricao>
+		</propriedade>
+		<propriedade nome='nmBairro'>
+			<nome>Bairro</nome>
+			<abreviacao>Bairro</abreviacao>
+			<descricao>Informe o bairro</descricao>
+		</propriedade>
+		<propriedade nome='nmMunicipio'>
+			<nome>Município</nome>
+			<abreviacao>Mun.</abreviacao>
+			<descricao>Informe o município</descricao>
+		</propriedade>
+		<propriedade nome='idEstado'>
+			<nome>Estado</nome>
+			<abreviacao>UF</abreviacao>
+			<descricao>Informe o estado</descricao>
+		</propriedade>
+		<propriedade nome='txEndereco'>
+			<nome>Endereço</nome>
+			<abreviacao>End.</abreviacao>
+			<descricao>Informe o endereço</descricao>
+		</propriedade>
+		<propriedade nome='nmEmail'>
+			<nome>E-mail</nome>
+			<abreviacao>E-mail</abreviacao>
+			<descricao>Informe o e-mail</descricao>
+		</propriedade>
+		<propriedade nome='nmSite'>
+			<nome>Site</nome>
+			<abreviacao>Site</abreviacao>
+			<descricao>Informe a URL do Site</descricao>
+		</propriedade>
+		</propriedades>
+	</entidade>
+	<controles>
+		<titulo>Pessoas</titulo>
+		<textos>
+			<texto id='novaTarefa'>Nova Tarefa</texto>
+		</textos>
+	</controles>
+</internacionalizacao>
