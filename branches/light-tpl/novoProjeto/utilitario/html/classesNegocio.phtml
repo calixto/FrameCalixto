@@ -1,0 +1,23 @@
+<?php echo '<?php' ;?>
+
+/**
+* Classe de representação de uma camada de negócio da entidade <?php echo $entidade;?>
+* A camada de negócio é a parte que engloba as regras e efetua os comandos de execução de um sistema
+* @package Sistema
+* @subpackage <?php echo $pacote;?>
+*/
+<?php echo $classe;?> <?php echo $negocioNome;?> extends negocioPadrao{
+	<?php foreach ($nomes as $indice => $propriedade):?>
+/**
+	* @gerador variavelPadrao
+	* @var <?php echo $tipos[$indice];?> <?php echo $nomesPropriedades[$indice];?>
+	*/
+	public $<?php echo $propriedade;?>;
+	<?php endforeach;?>
+/**
+	* Retorna o nome da propriedade que contém o valor chave de negócio
+	* @gerador metodoPadrao
+	* @return string
+	*/
+	function nomeChave(){ return '<?php echo $chave;?>'; }
+}

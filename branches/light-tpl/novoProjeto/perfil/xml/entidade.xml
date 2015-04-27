@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<entidade  nomeBanco='perfil' nomeSequencia='sq_perfil'>
+	<propriedades>
+		<propriedade id='idPerfil' tipo='numerico' tamanho='10' indicePrimario='sim'>
+			<banco nome='perf_id_perfil' />
+			<apresentacao componente='oculto' />
+		</propriedade>
+		<propriedade id='nmPerfil' tipo='texto' tamanho='60' obrigatorio='sim' descritivo='1'>
+			<banco nome='perf_nm_perfil' ordem='1' />
+			<apresentacao componente='caixa de entrada'>
+				<listagem ordem='1' tamanho='95%' />
+			</apresentacao>
+		</propriedade>
+		<propriedade id='boLogAcesso' tipo='texto' tamanho='3'>
+			<banco nome='perf_bo_log_acesso' />
+			<apresentacao componente='marcador' pesquisa='nao' />
+		</propriedade>
+	</propriedades>
+</entidade>

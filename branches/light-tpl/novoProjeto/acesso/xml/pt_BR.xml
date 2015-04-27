@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<internacionalizacao>
+	<entidade>
+		<nome>Acesso</nome>
+		<propriedades>
+		<propriedade nome='idAcesso'>
+			<nome>Código</nome>
+			<abreviacao>Cód.</abreviacao>
+			<descricao>Informe o código</descricao>
+		</propriedade>
+		<propriedade nome='idPerfil'>
+			<nome>Perfil</nome>
+			<abreviacao>Perfil</abreviacao>
+			<descricao>Informe o Perfil</descricao>
+		</propriedade>
+		<propriedade nome='idUsuario'>
+			<nome>Usuário</nome>
+			<abreviacao>Usuário</abreviacao>
+			<descricao>Informe o Usuário</descricao>
+		</propriedade>
+		<propriedade nome='nmAcesso'>
+			<nome>Nome</nome>
+			<abreviacao>Nome</abreviacao>
+			<descricao>Informe o nome do acesso</descricao>
+		</propriedade>
+		<propriedade nome='dtInicio'>
+			<nome>Data Início</nome>
+			<abreviacao>Dt. Início</abreviacao>
+			<descricao>Informe a data de início</descricao>
+		</propriedade>
+		<propriedade nome='dtFim'>
+			<nome>Data Fim</nome>
+			<abreviacao>Dt. Fim</abreviacao>
+			<descricao>Informe a data fim</descricao>
+		</propriedade>
+		</propriedades>
+	</entidade>
+	<controles>
+		<titulo>Acessos</titulo>
+	</controles>
+</internacionalizacao>

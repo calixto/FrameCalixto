@@ -1,0 +1,30 @@
+<div class="container">
+	<?php echo $mensageria;?>
+	<form name="formulario" method="post" action="<?php echo $action;?>" class="well">
+		<fieldset>
+			<legend><?php echo $tituloEspecifico;?></legend>
+			<div class="control-group">
+				<label class="control-label"><i class="icon-user"></i> <?php echo $nomeNmLogin;?>:</label>
+				<div class="controls">
+					<?php echo $nmLogin;?>
+				</div>
+			</div>			
+			<div class="control-group">
+				<label class="control-label"><i class="icon-lock"></i> <?php echo $nomeNmSenha;?>:</label>
+				<div class="controls">
+					<?php echo $nmSenha;?>
+				</div>
+			</div>			
+			<div class="control-group">
+				<div class="controls">
+					<?php echo $btEnviar;?>
+					<a href="?c=CUsuario_verEsqueciSenha" class="btn">Esqueci minha senha</a>
+					<a href="?c=CUsuario_verNovo" class="btn">Não possuo cadastro</a>
+				</div>
+			</div>			
+		</fieldset>
+		<div id='fc-menu-corpo'>
+			<?php echo $menuPrograma;?>
+		</div>
+	</form>
+</div>

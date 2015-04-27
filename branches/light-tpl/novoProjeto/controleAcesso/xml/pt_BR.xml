@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding="utf-8" ?>
+<internacionalizacao>
+	<entidade>
+		<nome>Login</nome>
+		<propriedades>
+			<propriedade nome="nmLogin">
+				<nome>Usuário</nome>
+				<abreviacao>Usuário</abreviacao>
+				<descricao>Informe o usuário</descricao>
+			</propriedade>
+			<propriedade nome="nmSenha">
+				<nome>Senha</nome>
+				<abreviacao>Senha</abreviacao>
+				<descricao>Informe a senha</descricao>
+			</propriedade>
+		</propriedades>
+	</entidade>
+	<mensagens>
+		<mensagem id="usuarioLogado">Bem vindo ao sistema!</mensagem>
+	</mensagens>
+	<controles>
+		<titulo>Acesso ao Sistema</titulo>
+		<textos>
+			<texto id="verLogin">Acessar</texto>
+			<texto id="verPrincipal">Principal</texto>
+		</textos>
+	</controles>
+</internacionalizacao>

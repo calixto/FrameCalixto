@@ -1,0 +1,26 @@
+<form name="formulario" method="post" action="<?php echo $action;?>" >
+	<div class="ver-edicao">
+		<h1 class="titulo-especifico"><?php echo $tituloEspecifico;?><span style="font-weight:bold;"><?php echo $tabela;?></span></h1>
+		<div class="listagem">
+			<table summary="text" class="tabela0">
+				<thead>
+					<tr>
+						<th>Campo</th>
+						<th>Banco</th>
+						<th>Aplicação</th>
+					</tr>
+				</thead>
+				<?php foreach ($listagem as $nome => $campo): ?>
+				<tr>
+					<td class="campo1"><?php echo $nome;?></td>
+					<td class="campo1"><?php echo isset($this->campo['banco']) ? $this->campo['banco'] : ''; ?></td>
+					<td class="campo1"><?php echo isset($this->campo['aplicacao']) ? $this->campo['aplicacao'] : '';?></td>
+				</tr>
+				<?php endforeach;?>
+			</table>
+	        <div id='menu_corpo'>
+	            <?php echo $menuPrograma;?>
+	        </div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,35 @@
+<style type="text/css">
+	.fc-listagem-grupo{
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+</style>
+<div class="container">
+	<form name="formulario" method="post" action="<?php echo $action;?>" >
+		<div>
+			<h4><?php echo $tituloEspecifico;?></h4>
+			<hr/>
+			<div class="fc-campo-grupo">
+				<div class="fc-campo-subgrupo">
+					<center>
+						<?php if($listagens) echo $nivel;?>
+						<input type="text" class="componente input-medium search-query" id="filtro" name="filtro" tabindex="1" value="<?php echo $filtro;?>" placeholder="digite algo para buscar">
+						<button type="submit" value="Pesquisar" class="componente btn btn-primary" id="Pesquisar" name="Pesquisar" tabindex="1"><i class="icon-search icon-white"></i> Pesquisar</button>
+					</center>
+				</div>
+			</div>
+			<?php if($listagens) foreach($listagens as $listagem):?>
+			<h5 class="titulo"><?php echo $listagem['nome'];?> 
+				<span class="label label-info"><?php echo $listagem['ocorrencias'];?></span></h5>
+			<div class="corpo">
+				<?php echo $listagem['listagem'];?>
+				<a class="btn" href="?c=<?php; echo $listagem['controlePesquisa'];?>"><i class="icon-list-alt"></i>
+					Ir para Pesquisa avançada de <?php echo $listagem['nome'];?></a>
+			</div>
+			<?php endforeach;?>
+		</div>
+		<div id='menu_corpo'>
+			<?php echo $menuPrograma;?>
+		</div>
+	</form>	
+</div>
