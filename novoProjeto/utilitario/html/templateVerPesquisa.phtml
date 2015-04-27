@@ -1,0 +1,28 @@
+<!---------------------- TEMPLATE PADRÃO ---------------------->
+<div class="container">
+	<?php echo '<?php echo '; ?>$mensageria«rdelim»
+	<form name="formulario" method="post" action="<?php echo '<?php echo '; ?>$action«rdelim»" >
+		<h4 class="fc-titulo-especifico"><?php echo '<?php echo '; ?>$tituloEspecifico«rdelim»</h4>
+		<hr/>
+		<div class="fc-campo-grupo">
+			<div class="fc-campo-subgrupo"><?php foreach ($nomes as $indice => $propriedade): ;?>
+
+				<div class="fc-campo">
+					<label for="«$propriedade»"><?php echo '<?php echo '; ?>$<?php echo $indice; ?><?php echo ';?> '; ?>:</label>
+					<span><?php echo '<?php echo '; ?>$«$propriedade»<?php echo ';?> '; ?></span>
+				</div><?php endforeach;?>
+
+			</div>
+			<div id='menu_corpo'>
+				<?php echo '<?php echo '; ?>$menuPrograma<?php echo ';?> '; ?><br/><br/>
+			</div>
+			<div class="fc-listagem-grupo">
+				<h4 class="fc-listagem-titulo"><i class='icon-search' ></i> <?php echo '<?php echo '; ?>$textoTituloListagem«rdelim»</h4>
+				<div class="fc-listagem">
+					<?php echo '<?php echo '; ?>$listagem<?php echo ';?> '; ?>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<!---------------------- TEMPLATE PADRÃO ---------------------->

@@ -197,13 +197,13 @@ class CUtilitario_geradorEntidade extends controle{
 		$persistente = definicaoEntidade::persistente(self::$nomeNegocio);
 		$visualizacao->persistenteNome = $persistente;
 		$visualizacao->persistentePai = 'persistentePadraoPG';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$persistente}.postgres.php",$visualizacao->pegar('classesPersistente.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$persistente}.postgres.php",$visualizacao->pegar('classesPersistente.phtml'));
 		$visualizacao->persistentePai = 'persistentePadraoMySql';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$persistente}.mysql.php",$visualizacao->pegar('classesPersistente.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$persistente}.mysql.php",$visualizacao->pegar('classesPersistente.phtml'));
 		$visualizacao->persistentePai = 'persistentePadraoOCI';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$persistente}.oracle.php",$visualizacao->pegar('classesPersistente.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$persistente}.oracle.php",$visualizacao->pegar('classesPersistente.phtml'));
 		$visualizacao->persistentePai = 'persistentePadraoSqlite';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$persistente}.sqlite.php",$visualizacao->pegar('classesPersistente.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$persistente}.sqlite.php",$visualizacao->pegar('classesPersistente.phtml'));
 	}
 	/**
 	* Monta a classe de negocio
@@ -231,7 +231,7 @@ class CUtilitario_geradorEntidade extends controle{
 		$visualizacao->nomesPropriedades = self::$dados['inter']['nome'];
 		$visualizacao->tipos = $arTiposEntidade;
 		$visualizacao->negocioNome = self::$nomeNegocio;
-		self::escreverArquivo(self::$nomeEntidade."/classes/".self::$nomeNegocio.".php",$visualizacao->pegar('classesNegocio.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/".self::$nomeNegocio.".php",$visualizacao->pegar('classesNegocio.phtml'));
 	}
 	/**
 	* Monta a classe de internacionalização
@@ -239,7 +239,7 @@ class CUtilitario_geradorEntidade extends controle{
 	public static function montarInternacionalizacao(visualizacao $visualizacao){
 		$internacionalizacao = definicaoEntidade::internacionalizacao(self::$nomeNegocio);
 		$visualizacao->internacionalizacaoNome = $internacionalizacao;
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$internacionalizacao}.php",$visualizacao->pegar('classesInternacionalizacao.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$internacionalizacao}.php",$visualizacao->pegar('classesInternacionalizacao.phtml'));
 	}
 	/**
 	* Monta o controle de Exclusão
@@ -249,7 +249,7 @@ class CUtilitario_geradorEntidade extends controle{
 		$visualizacao->acao = "Executa a exclusão de um objeto : ".self::$dados['entidade'];
 		$visualizacao->controleNome = "{$controle}_excluir";
 		$visualizacao->controlePai = 'controlePadraoExcluir';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_excluir.php",$visualizacao->pegar('classesControle.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_excluir.php",$visualizacao->pegar('classesControle.phtml'));
 	}
 	/**
 	* Monta o controle de Gravação
@@ -259,7 +259,7 @@ class CUtilitario_geradorEntidade extends controle{
 		$visualizacao->acao = "Executa a gravação de um objeto : ".self::$dados['entidade'];
 		$visualizacao->controleNome = "{$controle}_gravar";
 		$visualizacao->controlePai = 'controlePadraoGravar';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_gravar.php",$visualizacao->pegar('classesControle.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_gravar.php",$visualizacao->pegar('classesControle.phtml'));
 	}
 	/**
 	* Monta o controle de Mudança de Pagina
@@ -269,7 +269,7 @@ class CUtilitario_geradorEntidade extends controle{
 		$visualizacao->acao = "Executa a mudança de pagina da listagem";
 		$visualizacao->controleNome = "{$controle}_mudarPagina";
 		$visualizacao->controlePai = 'controlePadraoMudarPagina';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_mudarPagina.php",$visualizacao->pegar('classesControle.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_mudarPagina.php",$visualizacao->pegar('classesControle.phtml'));
 	}
 	/**
 	* Monta o controle de Pesquisar
@@ -279,7 +279,7 @@ class CUtilitario_geradorEntidade extends controle{
 		$visualizacao->acao = "Executa a pesquisa de um objeto : ".self::$dados['entidade'];
 		$visualizacao->controleNome = "{$controle}_pesquisar";
 		$visualizacao->controlePai = 'controlePadraoPesquisar';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_pesquisar.php",$visualizacao->pegar('classesControle.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_pesquisar.php",$visualizacao->pegar('classesControle.phtml'));
 	}
 	/**
 	* Monta o controle de Ver
@@ -289,7 +289,7 @@ class CUtilitario_geradorEntidade extends controle{
 		$visualizacao->acao = "Cria a visualização de um objeto : ".self::$dados['entidade'];
 		$visualizacao->controleNome = "{$controle}_verEdicao";
 		$visualizacao->controlePai = 'controlePadraoVerEdicao';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_verEdicao.php",$visualizacao->pegar('classesControle.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_verEdicao.php",$visualizacao->pegar('classesControle.phtml'));
 	}
 	/**
 	* Monta o controle de Ver a Pesquisa
@@ -299,7 +299,7 @@ class CUtilitario_geradorEntidade extends controle{
 		$visualizacao->acao = "Cria a visualização da pesquisa de um objeto : ".self::$dados['entidade'];
 		$visualizacao->controleNome = "{$controle}_verPesquisa";
 		$visualizacao->controlePai = 'controlePadraoPesquisa';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_verPesquisa.php",$visualizacao->pegar('classesControle.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_verPesquisa.php",$visualizacao->pegar('classesControle.phtml'));
 	}
 	/**
 	* Monta o controle de Ver Listagem Pdf
@@ -309,7 +309,7 @@ class CUtilitario_geradorEntidade extends controle{
 		$visualizacao->acao = "Cria a visualização PDF listando objetos : ".self::$dados['entidade'];
 		$visualizacao->controleNome = "{$controle}_verListagemPdf";
 		$visualizacao->controlePai = 'controlePadraoPDFListagem';
-		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_verListagemPdf.php",$visualizacao->pegar('classesControle.html'));
+		self::escreverArquivo(self::$nomeEntidade."/classes/{$controle}_verListagemPdf.php",$visualizacao->pegar('classesControle.phtml'));
 	}
 	/**
 	* Monta o template de ver
@@ -325,8 +325,8 @@ class CUtilitario_geradorEntidade extends controle{
 		$arNomeTema = explode('/',definicaoPasta::tema());
 		if(!($nomeTema = array_pop($arNomeTema))){$nomeTema = array_pop($arNomeTema);};
 		$nomeTema = $nomeTema ? $nomeTema.'_' : null;
-		if(!is_file($visualizacao->template_dir."{$nomeTema}templateVerEdicao.html")) $nomeTema = null;
-		self::escreverArquivo(self::$nomeEntidade."/html/{$nomeTema}{$controle}_verEdicao.html",$visualizacao->pegar("{$nomeTema}templateVerEdicao.html"));
+		if(!is_file($visualizacao->template_dir."{$nomeTema}templateVerEdicao.phtml")) $nomeTema = null;
+		self::escreverArquivo(self::$nomeEntidade."/html/{$nomeTema}{$controle}_verEdicao.phtml",$visualizacao->pegar("{$nomeTema}templateVerEdicao.phtml"));
 	}
 	/**
 	* Monta o template de verPesquisa
@@ -341,8 +341,8 @@ class CUtilitario_geradorEntidade extends controle{
 		$arNomeTema = explode('/',definicaoPasta::tema());
 		if(!($nomeTema = array_pop($arNomeTema))){$nomeTema = array_pop($arNomeTema);};
 		$nomeTema = $nomeTema ? $nomeTema.'_' : null;
-		if(!is_file($visualizacao->template_dir."{$nomeTema}templateVerPesquisa.html")) $nomeTema = null;
-		self::escreverArquivo(self::$nomeEntidade."/html/{$nomeTema}{$controle}_verPesquisa.html",$visualizacao->pegar("{$nomeTema}templateVerPesquisa.html"));
+		if(!is_file($visualizacao->template_dir."{$nomeTema}templateVerPesquisa.phtml")) $nomeTema = null;
+		self::escreverArquivo(self::$nomeEntidade."/html/{$nomeTema}{$controle}_verPesquisa.phtml",$visualizacao->pegar("{$nomeTema}templateVerPesquisa.phtml"));
 	}
 }
 ?>

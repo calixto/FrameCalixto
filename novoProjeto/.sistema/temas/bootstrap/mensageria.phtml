@@ -1,0 +1,28 @@
+<?php if ($comunicacaoSucesso):?>
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<i class="icon-ok-sign icon-success"></i>
+		<?php echo $comunicacaoSucesso;?>
+	</div>
+<?php endif;?>
+<?php if ($comunicacaoAlerta):?>
+	<div class="alert alert-danger">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<i class="icon-warning-sign icon-danger"></i>
+		<?php echo $comunicacaoAlerta;?>
+	</div>
+<?php endif;?>
+<?php if ($comunicacaoErro):?>
+	<div class="alert alert-danger">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<i class="icon-exclamation-sign icon-danger"></i>
+		<?php echo $comunicacaoErro;?>
+	</div>
+<?php endif;?>
+<?php if ($descricaoDeAjuda):?>
+	<div class="alert alert-info">
+		<!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+		<i class="icon-info-sign icon-info"></i>
+		<?php echo $descricaoDeAjuda;?>
+	</div>
+<?php endif;?>

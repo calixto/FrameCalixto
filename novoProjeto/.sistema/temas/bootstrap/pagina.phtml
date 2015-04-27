@@ -1,0 +1,114 @@
+<?php 
+/*
+*** TEMPLATE PRINCIPAL DO SISTEMA ***
+Configure este template para atender as necessidades do tema do seu sistema
+*/
+?><!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <?php 
+		/**
+         * "Icone da barra de endereços"
+         *	O arquivo com a imagem que irá aparecer na barra de endereços é definida na tag abaixo
+         */ 
+		 ?>
+        <link rel="icon" href=".sistema/icones/weather_sun.png" type="image/x-icon" id="iconeBarraEnderecos"/>
+        <?php 
+		/**
+         * "CSS do Sistema"
+         *	O arquivo css abaixo irá conter a importação de todos os arquivos css necessários
+         *	para a visualização básica do tema do sistema
+         */ 
+		 ?>
+        <?php if ($cssGlobal): ?><link type="text/css" rel="stylesheet" href="<?php echo $cssGlobal; ?>" media="screen" id="cssGlobalDoSistema"/><?php endif; ?>
+		<link type="text/css" rel="stylesheet" href=".sistema/temas/bootstrap/js/select2/select2.css" media="screen"/>
+        <?php /**
+        * "CSS comum da entidade do sistema"
+        *	O arquivo css abaixo irá definir as necessidades comuns da aparência de 
+        *	uma entidade
+        */ ?>
+        <?php if ($cssEntidade): ?><link type="text/css" rel="stylesheet" href="<?php echo $cssEntidade; ?>" media="screen" id="cssEntidade"/><?php endif; ?>
+        <?php /**
+        * "CSS específico do controle da entidade"
+        *	O arquivo css abaixo irá definir as necessidades comuns da aparência de
+        *	um único controle de uma entidade
+        */ ?>
+        <?php if ($cssLocal): ?><link type="text/css" rel="stylesheet" href="<?php echo $cssLocal?>" media="screen" id="cssLocal"/><?php endif; ?>
+        <?php /**
+        * "CSS extra especificado no controle"
+        *	A variável abaixo define as tags de css extra para o controle
+        */ ?>
+        <?php echo $cssExtra; ?>
+        <?php /**
+        * "Script de internacionalização do sistema"
+        *	Neste trecho será definido todas as variáveis de internacionalização javascript
+        *	para a utilização nos scripts e mensagens de javascript do sistema
+        */ ?>
+        <script  language='javascript' type="text/javascript" id="jsInternacionalizacao">
+			var JS_ERRO_DATA = '<?php echo $mensagemErroData?>';
+			var JS_ERRO_DIA = '<?php echo $mensagemErroDia?>';
+			var JS_ERRO_MES = '<?php echo $mensagemErroMes?>';
+			var JS_ERRO_ANO = '<?php echo $mensagemErroAno?>';
+			var JS_ERRO_HORA = '<?php echo $mensagemErroHora?>';
+			var JS_ERRO_EMAIL = '<?php echo $mensagemErroEmail?>';
+			var JS_DIRETORIO_RAIZ = '.sistema/scripts/';
+        </script>
+        <?php /**
+        * "Scripts do Sistema"
+        *	Caso sinta necessidade de adicionar um script no sistema SEMPRE verifique se
+        *	este script é realmente utilizado em todas as telas do sistema, caso não seja
+        *	inclua o script pela variável $jsExtra do template.
+        *
+        * "Atenção"
+        *	A adição de scripts nesta sessão torna uma carga obrigatória em TODAS as
+        *	páginas do sistema.
+        */ ?>
+        <script language="javascript" type="text/javascript" src=".sistema/scripts/jquery/jquery-1.7.1.min.js" id="jsJQuery" ></script>
+        <script language="javascript" type="text/javascript" src=".sistema/temas/bootstrap/js/bootstrap.min.js"></script>
+        <script language="javascript" type="text/javascript" src=".sistema/temas/bootstrap/js/bootstrap-datepicker.js"></script>
+        <script language="javascript" type="text/javascript" src=".sistema/temas/bootstrap/js/select2/select2.js"></script>
+        <script language="javascript" type="text/javascript" src=".sistema/temas/bootstrap/js/select2/select2_locale_pt-BR.js"></script>
+        <script language="javascript" type="text/javascript" src=".sistema/scripts/jquery/plugins/jquery.maskedinput-1.2.2.js" ></script>
+        <script language="javascript" type="text/javascript" src=".sistema/scripts/jquery/plugins/jquery.price_format.1.0.js"></script>
+        <script language="javascript" type="text/javascript" src=".sistema/scripts/calixto.date.js"></script>
+        <script language="javascript" type="text/javascript" src=".sistema/scripts/calixto.formatadores.js"></script>
+        <script language="javascript" type="text/javascript" src=".sistema/scripts/calixto.funcoes.js" id="jsGlobalDoSistema"></script>
+        <?php if ($jsTema): ?><script language="javascript" type="text/javascript" src="<?php echo $jsTema?>" id="jsTema"></script><?php endif; ?>
+        <?php if ($jsEntidade): ?><script language="javascript" type="text/javascript" src="<?php echo $jsEntidade?>" id="jsEntidade"></script><?php endif; ?>
+        <?php if ($jsLocal): ?><script language="javascript" type="text/javascript" src="<?php echo $jsLocal?>" id="jsLocal"></script><?php endif; ?>
+        <?php 
+		/**
+        * "Scripts extras"
+        *	Configure esta variável no seu controle para um script específico
+        *	Neste caso adicione a tag script completa para funcionamento correto
+        */ 
+		?>
+        <?php echo $jsExtra ?>
+        <title><?php echo $titulo ?> [<?php echo $tituloEspecifico?>]</title>
+    </head>
+    <body>
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<a href="#" class="brand">FrameCalixto</a>
+				<ul class="nav pull-right">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<i class="icon-user icon-white"></i>
+							<?php echo $nomeLogado?>
+							<?php echo $menuPrincipal?>
+						</a> 
+					</li>
+					<li>
+						<?php if ($nomeLogado == 'Visitante'): ?>
+						<a href="?c=CControleAcesso_verLogin"><i class="icon-off icon-white"></i> Acessar</a>
+						<?php else: ?>
+						<a href="?c=CControleAcesso_deslogar"><i class="icon-off icon-white"></i> Desligar</a>
+						<?php endif; ?>
+					</li>
+				</ul>
+			</div>
+		</div>
+        <?php echo $conteudo ?>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!--********************* TEMPLATE PADRÃO **********************-->
+<div class="container">
+	<?php echo $mensageria;?>
+	<form name="formulario" method="post" action="<?php echo $action;?>" class="form-horizontal well">
+		<h4 class="fc-titulo-especifico"><?php echo $tituloEspecifico;?></h4>
+		<hr/>
+		<div class="fc-campo-grupo">
+			<?php echo $chave;?>
+			<div class="fc-campo-subgrupo">
+				<?php foreach ($___componentesPadroes as $componente): ?>
+				<div class='fc-campo'>
+					<label for='<?php echo $componente->pegarId();?>'><?php echo ${'descricao'.  ucFirst($componente->pegarId())};?></label>
+					<span><?php echo $componente;?></span>
+				</div>
+				<?php endforeach;?>
+			</div>
+			<div class='clearfix'><br/></div>
+			<div class="fc-menu-corpo">
+				<?php echo $menuPrograma;?><br/>
+			</div>
+		</div>
+	</form>
+</div>
+<!--********************* TEMPLATE PADRÃO **********************-->

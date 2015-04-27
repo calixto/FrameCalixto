@@ -1,0 +1,42 @@
+<script>
+	$.fn.importar = function() {
+		$('.modal').modal('show');
+		$('.modal-body').html('Executando importação...');
+		$.ajax({
+			url:'?c=CUtilitario_importadorXML&imprimir=true',
+			type:'post',
+			dataType:'html',
+			data:$('form').serialize()
+		}).done(function(data){
+			$('.modal-body').html(data);
+		});
+	}
+</script>
+<div class="container">
+	<?php echo $mensageria;?>
+	<form name="formulario" method="post" action="<?php echo $action;?>" >
+		<div>
+			<h4 class="fc-titulo-especifico"><?php echo $tituloEspecifico;?></h4>
+			<hr/>
+			<div class="control-group">
+				<div>
+					<label class="control-label"></label>
+					<div class="controls">
+						<?php echo $xml;?>
+					</div>
+				</div>
+				<div id='fc-menu-corpo'>
+					<?php echo $menuPrograma;?>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal hide fade">
+    <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4>Resultado da importação</h4>
+    </div>
+    <div class="modal-body">
+    </div>
+</div>
