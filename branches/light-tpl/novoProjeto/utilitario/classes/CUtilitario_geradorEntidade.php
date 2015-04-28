@@ -43,9 +43,9 @@ class CUtilitario_geradorEntidade extends controle{
 			if(!is_dir(self::$nomeEntidade."/xml"))
 				mkdir(self::$nomeEntidade."/xml",0777);
 			chmod(self::$nomeEntidade."/xml",2777);
-			if(!is_dir(self::$nomeEntidade."/html"))
-				mkdir(self::$nomeEntidade."/html",0777);
-			chmod(self::$nomeEntidade."/html",2777);
+			if(!is_dir(self::$nomeEntidade."/phtml"))
+				mkdir(self::$nomeEntidade."/phtml",0777);
+			chmod(self::$nomeEntidade."/phtml",2777);
 			umask(0111);
 		}
 		$visualizacao->entidade = self::$dados['entidade'];
@@ -65,9 +65,7 @@ class CUtilitario_geradorEntidade extends controle{
 		self::montarTemplateVerPesquisa($visualizacao);
 		exec("chmod -R 777 ".self::$nomeEntidade);
 		if((self::$dados['recriarBase']) && self::$executar){
-			$persistente = definicaoEntidade::persistente(self::$nomeNegocio);
-			$conexao = conexao::criar();
-			$obPersistente = new $persistente($conexao);
+			$obPersistente = new ${definicaoEntidade::persistente(self::$nomeNegocio)}(conexao::criar());
 			$obPersistente->recriar();
 		}
 	}
@@ -326,7 +324,7 @@ class CUtilitario_geradorEntidade extends controle{
 		if(!($nomeTema = array_pop($arNomeTema))){$nomeTema = array_pop($arNomeTema);};
 		$nomeTema = $nomeTema ? $nomeTema.'_' : null;
 		if(!is_file($visualizacao->template_dir."{$nomeTema}templateVerEdicao.phtml")) $nomeTema = null;
-		self::escreverArquivo(self::$nomeEntidade."/html/{$nomeTema}{$controle}_verEdicao.phtml",$visualizacao->pegar("{$nomeTema}templateVerEdicao.phtml"));
+		self::escreverArquivo(self::$nomeEntidade."/phtml/{$nomeTema}{$controle}_verEdicao.phtml",$visualizacao->pegar("{$nomeTema}templateVerEdicao.phtml"));
 	}
 	/**
 	* Monta o template de verPesquisa
@@ -342,7 +340,7 @@ class CUtilitario_geradorEntidade extends controle{
 		if(!($nomeTema = array_pop($arNomeTema))){$nomeTema = array_pop($arNomeTema);};
 		$nomeTema = $nomeTema ? $nomeTema.'_' : null;
 		if(!is_file($visualizacao->template_dir."{$nomeTema}templateVerPesquisa.phtml")) $nomeTema = null;
-		self::escreverArquivo(self::$nomeEntidade."/html/{$nomeTema}{$controle}_verPesquisa.phtml",$visualizacao->pegar("{$nomeTema}templateVerPesquisa.phtml"));
+		self::escreverArquivo(self::$nomeEntidade."/phtml/{$nomeTema}{$controle}_verPesquisa.phtml",$visualizacao->pegar("{$nomeTema}templateVerPesquisa.phtml"));
 	}
 }
 ?>
