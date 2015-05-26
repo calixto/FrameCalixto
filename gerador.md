@@ -1,0 +1,40 @@
+#O que é o gerador de cadastros.
+
+# Gerador de Cadastros #
+
+O Gerador de cadastros é um programa que gera os arquivos para uma entidade do sistema, estes arquivos são responsáveis pelas operações básicas de "CRUD" (Create,Retrieve,Update and Delete), este programa gerado terá as duas telas básicas de Edição e Pesquisa.
+  * a <font color='#0000FF'>Tela de Pesquisa</font> existirão os campos de filtro da pesquisa com as opções:
+    * <font color='#008800'>Novo</font> para um novo registro;
+    * <font color='#008800'>Pesquisar</font> para executar a pesquisa do filtro que está sendo exibido.
+    * Listagem simplemente para a exibição dos registros que foram pesquisados, e com o link para as opções:
+      * <font color='#008800'>Edição</font> exibe o registro para a edição.
+      * <font color='#008800'>Exclusão</font> executa a exclusão do registro.
+  * a <font color='#0000FF'>Tela de Edição</font> existirão os campos de edição do registro com as opções:
+    * <font color='#008800'>Gravar</font> para executar a gravação do registro apresentado ou de um novo registro.
+    * <font color='#008800'>Excluir</font> para executar a exclusão do registro apresentado.
+    * <font color='#008800'>Listagem</font> para exibir a listagem de pesquisa dos registros da entidade.
+
+
+# Como Utilizar o Gerador de Cadastros #
+
+Existem três formas de se carregar o gerador de cadastros:
+  * Carregando para um novo cadastro sem tabela de dados:
+    * Clique em novo na tela de exibição das entidades do sistema.
+    * Neste caso como não existe uma tabela no banco de dados, para criar uma tabela clique na opção de configurações **Recriar a tabela no banco de dados**
+  * Carregando a partir de uma tabela do banco de dados:
+    * Cliquem em Tabelas do Banco na tela de exibição das entidades do sistema.
+    * Neste caso **não é necessário a criação da tabela, mas você poderá** executar a recriação caso acredite ser necessário, para criar uma tabela clique na opção de configurações **Recriar a tabela no banco de dados**
+  * Carregando a partir de uma entidade do sistema.
+    * Clique no link de editar na linha da entidade.
+    * Neste caso irá ser carregado um programa que já está gerado no sistema, então você poderá gerar somente **os arquivos necessários na guia de configurações.**
+
+Após a tela do gerador ter sido carregada, observe que existem as guias:
+
+
+  * <font color='#008800'>Entidade</font>, nesta guia você define os nomes da entidade e suas propriedades ou atributos.(Ps: nestes campos podem-se adicionar caracteres acentuados e cedilha)
+    * _Nome da entidade_: Serve para definir o nome da entidade a ser gerada no seu sistema, a partir deste nome o programa irá definir o diretório do sistema que conterá os arquivos da entidade.
+    * _Nome da propriedade_: Serve para definir o nome da propriedade que descreve a entidade, como por exemplo uma "Pessoa" é descrita pela "Altura", "Cor da Pele", "Cor dos olhos" entre outros.
+  * <font color='#008800'>Negócio</font>,
+  * <font color='#008800'>Persistente</font>,
+  * <font color='#008800'>Visualização</font>,
+  * <font color='#008800'>Configurações</font>,
