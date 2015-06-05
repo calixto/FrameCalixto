@@ -19,7 +19,7 @@
  * @param {Json} params
  * @returns {Json}
  */
-$.fn.view = function (method, params, callbackDebug) {
+$.fn.view = function(method, params, callbackDebug) {
     switch (method) {
         case 'assign':
             $(this).assign(params, callbackDebug);
@@ -48,7 +48,7 @@ $.fn.view = function (method, params, callbackDebug) {
  * @param {type} selector
  * @returns {jQuery}
  */
-$.fn.findMeToo = function (selector) {
+$.fn.findMeToo = function(selector) {
     if ($(this).is(selector)) {
         return $(this).add($(this).find(selector));
     } else {
@@ -61,11 +61,11 @@ $.fn.findMeToo = function (selector) {
  * @param string value
  * @returns void
  */
-$.fn.dataProp = function (property, valor) {
+$.fn.dataProp = function(property, valor) {
     var $this = $(this);
     if (!$this[0])
         return;
-    $.each($this, function () {
+    $.each($this, function() {
         var attr = $this.attr('data-prop-' + property);
         if (!attr) {
             console.warning($this, 'not found value of: ' + 'data-prop-' + property);
@@ -91,11 +91,11 @@ $.fn.dataProp = function (property, valor) {
  * @param string value
  * @returns void
  */
-$.fn.dataAttr = function (property, valor) {
+$.fn.dataAttr = function(property, valor) {
     var $this = $(this);
     if (!$this[0])
         return;
-    $.each($this, function () {
+    $.each($this, function() {
         var attr = $this.attr('data-attr-' + property);
         if (!attr) {
             console.warning($this, 'value of ' + 'data-attr-' + property + ' is not found.');
@@ -132,9 +132,9 @@ $.fn.dataAttr = function (property, valor) {
  * @param function to debug
  * @returns jQuery
  */
-$.fn.assign = function (obj, fnDebug) {
+$.fn.assign = function(obj, fnDebug) {
     var $this = $(this);
-    fnDebug = fnDebug || function () {
+    fnDebug = fnDebug || function() {
     };
     if (!$this.size())
         return;
@@ -170,9 +170,9 @@ $.fn.assign = function (obj, fnDebug) {
  * @param function to debug
  * @returns Array with json objects
  */
-$.fn.extractCollection = function (obj, seletor, fn) {
+$.fn.extractCollection = function(obj, seletor, fn) {
     var res = [];
-    $.each($(this).find(seletor), function () {
+    $.each($(this).find(seletor), function() {
         res.push($(this).extract($.extend(true, {}, obj), fn));
     });
     return res;
@@ -183,8 +183,8 @@ $.fn.extractCollection = function (obj, seletor, fn) {
  * @param function to debug
  * @returns Object json
  */
-$.fn.extract = function (objeto, fn) {
-    fn = fn || function () {
+$.fn.extract = function(objeto, fn) {
+    fn = fn || function() {
     };
     var $this = $(this);
     if (!$this[0])
@@ -215,7 +215,7 @@ $.fn.extract = function (objeto, fn) {
  * @param boolean to clean before init operation
  * @returns jQuery
  */
-$.fn.iterate = function ($tpl, collection, callbackItem, cleanBeforeInit, callbackDebug) {
+$.fn.iterate = function($tpl, collection, callbackItem, cleanBeforeInit, callbackDebug) {
     cleanBeforeInit = cleanBeforeInit || false;
     if (cleanBeforeInit) {
         $(this).html('');

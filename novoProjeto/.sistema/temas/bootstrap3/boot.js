@@ -7,7 +7,7 @@ var Controle = new _Controlador(new _ConfControlador({
     varPilhaCss: 'pilhaArquivosCss'
 }),
         new _Disparador({
-            'antesAcao': [function () {
+            'antesAcao': [function() {
                     Controle.escopoTela().find('form[data-ajax]').formAjax();
                     Controle.escopoTela().find('textarea[data-limite]').contadorDeTexto();
                     Controle.escopoTela().find('fieldset[data-multiple]').multiple();
@@ -36,14 +36,14 @@ var Controle = new _Controlador(new _ConfControlador({
                     Controle.escopoTela().find('.data-hora-segundos').tipoDataHoraSegundos();
                     Controle.escopoTela().find('.upper').tipoUpper();
                 }],
-            'depoisAcao': [function () {
+            'depoisAcao': [function() {
                 }]
         }));
 var Sistema = new _Sistema({
     $menu: $('.js-menu-sistema'),
     $btnMenu: $('.btn-menu-sistema')
 });
-Sistema.tela = function (url, $_GET, $_POST, fn) {
-    $_GET = $.extend(true, {'c':url, 'tipoResposta':'ajax'}, $_GET)
+Sistema.tela = function(url, $_GET, $_POST, fn) {
+    $_GET = $.extend(true, {'c': url, 'tipoResposta': 'ajax'}, $_GET)
     Controle.ir('', $_GET, $_POST, fn);
 };

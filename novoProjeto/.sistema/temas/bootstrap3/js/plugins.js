@@ -3,10 +3,10 @@
  * @param {string} h
  * @returns {Object}
  */
-(function (h) {
-    h.deparam = function (i, j) {
+(function(h) {
+    h.deparam = function(i, j) {
         var d = {}, k = {"true": !0, "false": !1, "null": null};
-        h.each(i.replace(/\+/g, " ").split("&"), function (i, l) {
+        h.each(i.replace(/\+/g, " ").split("&"), function(i, l) {
             var m;
             var a = l.split("="), c = decodeURIComponent(a[0]), g = d, f = 0, b = c.split("]["), e = b.length - 1;
             /\[/.test(b[0]) && /\]$/.test(b[e]) ? (b[e] = b[e].replace(/\]$/, ""), b = b.shift().split("[").concat(b), e = b.length - 1) : e = 0;
@@ -23,10 +23,10 @@
     }
 })(jQuery);
 
-$.fn.resumir = function (tamanho, posicao) {
+$.fn.resumir = function(tamanho, posicao) {
     tamanho = tamanho || 10;
     posicao = posicao || 'top';
-    $.each($(this), function () {
+    $.each($(this), function() {
         var cont = $(this).html();
         $(this).attr('data-content', cont);
         $(this).attr('data-container', 'body');
@@ -35,12 +35,12 @@ $.fn.resumir = function (tamanho, posicao) {
         if (cont.length > (tamanho)) {
             $(this).html($(this).html().slice(0, tamanho - 3) + '...');
         }
-        $(this).mouseover(function () {
+        $(this).mouseover(function() {
             if (cont.length > tamanho) {
                 $(this).popover('show');
             }
         });
-        $(this).mouseout(function () {
+        $(this).mouseout(function() {
             $(this).popover('hide');
         })
     });
@@ -50,7 +50,7 @@ $.fn.resumir = function (tamanho, posicao) {
  * @param {String} tipo
  * @returns {jQuery} o ícone criado
  */
-$.fn.icone = function (tipo) {
+$.fn.icone = function(tipo) {
     var $icone = $('<span class="' + tipo + '"></span>');
     $(this).append($icone);
     return $icone;
@@ -61,7 +61,7 @@ $.fn.icone = function (tipo) {
  * @param {type} tipo do input group
  * @returns {jQuery}
  */
-$.fn.inputGroup = function (tipo) {
+$.fn.inputGroup = function(tipo) {
     if ($(this).parents('[data-input-group]')[0]) {
         return $(this).parents('[data-input-group]');
     }
@@ -102,9 +102,9 @@ $.fn.inputGroup = function (tipo) {
  * } options
  * @returns jQuery
  */
-$.fn.preencherCombo = function (options) {
+$.fn.preencherCombo = function(options) {
     conf = {
-        callback: function () {
+        callback: function() {
         },
         colecao: {},
         campoVal: 'val',
@@ -114,7 +114,7 @@ $.fn.preencherCombo = function (options) {
     };
     conf = $.extend(conf, options);
 
-    var option = function (item) {
+    var option = function(item) {
         var $opt = $('<option>');
         $opt.attr('value', item[conf.campoVal]);
         $opt.html(item[conf.campoDesc]);
@@ -132,7 +132,7 @@ $.fn.preencherCombo = function (options) {
         $this.append(option(item));
     }
     if (conf.colecao) {
-        $.each(conf.colecao, function () {
+        $.each(conf.colecao, function() {
             $this.append(option(this));
         });
     }
@@ -144,8 +144,8 @@ $.fn.preencherCombo = function (options) {
  * @FIXME codigo tempoorario. Rever e mesclar com funcao apresentarColecaoDoCombobox
  * @returns {undefined}
  */
-$.fn.apresentarColecaoDoCombobox = function (options) {
-    $.each($(this), function () {
+$.fn.apresentarColecaoDoCombobox = function(options) {
+    $.each($(this), function() {
         eval('var colecao = ' + $(this).attr('data-colecao') + ';');
         if (colecao) {
             var val = $(this).attr('data-campo-val');
@@ -165,8 +165,8 @@ $.fn.apresentarColecaoDoCombobox = function (options) {
 /**
  * Cria componente de E-mail
  */
-$.fn.tipoEmail = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoEmail = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -177,24 +177,24 @@ $.fn.tipoEmail = function () {
                 .inputGroup('before')
                 .find('.input-group-addon')
                 .icone('glyphicons envelope icon-purple');
-        $(item).keyup(function () {
+        $(item).keyup(function() {
             if (!$(this).val().match(/(.+)\@(.+)\.(.+)/)) {
                 $(this).addClass('text-danger').removeClass('text-success');
             } else {
                 $(this).addClass('text-success').removeClass('text-danger');
             }
         });
-        $(item).change(function () {
+        $(item).change(function() {
             if ($(this).val() && !$(this).val().match(/(.+)\@(.+)\.(.+)/)) {
                 $(this).val('');
                 Message.showInfo('Formato de E-mail inválido.');
             }
             $(this).removeClass('text-danger').removeClass('text-success');
         });
-        $(item).blur(function () {
+        $(item).blur(function() {
             $(this).removeClass('text-danger').removeClass('text-success');
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -204,8 +204,8 @@ $.fn.tipoEmail = function () {
 /**
  * Cria componente de CNPJ
  */
-$.fn.tipoCnpj = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoCnpj = function() {
+    $.each($(this), function(i, item) {
         // Se não for um input, no caso de um label, span, strong, div ...
         if (item.tagName != 'INPUT') {
             $(item).text(CNPJ.formatar($(item).text()));
@@ -226,8 +226,8 @@ $.fn.tipoCnpj = function () {
 /**
  * Cria componente de CPF
  */
-$.fn.tipoCpf = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoCpf = function() {
+    $.each($(this), function(i, item) {
         // Se não for um input, no caso de um label, span, strong, div ...
         if (item.tagName != 'INPUT') {
             $(item).text(CNPJ.formatar($(item).text()));
@@ -246,7 +246,7 @@ $.fn.tipoCpf = function () {
     });
 };
 
-verificarCpfCnpj = function (item) {
+verificarCpfCnpj = function(item) {
     var valorClean = $(item).val().match(/[0-9]/g);
     if (valorClean) {
         switch (true) {
@@ -260,38 +260,38 @@ verificarCpfCnpj = function (item) {
     }
 };
 
-configInputCpf = function (item) {
+configInputCpf = function(item) {
     $(item).off('keyup').off('blur').off('drop').data('mask-tipo-documento', 'cpf').unmask().mask('999.999.999-99');
-    $(item).on("drop", function (event) {
+    $(item).on("drop", function(event) {
         event.preventDefault();
         event.stopPropagation();
     });
-    $(item).on('blur', function () {
+    $(item).on('blur', function() {
         if ($(this).val() && !valida_cpf($(this).val())) {
             Mensagem.deErro('Número de CPF inválido.');
             $(this).val('');
         }
     });
-    $(item).on('keyup', function (e) {
+    $(item).on('keyup', function(e) {
         verificarCpfCnpj(this);
         if (e.keyCode === 13) {
             $(this).trigger('blur');
         }
     });
 };
-configInputCnpj = function (item) {
+configInputCnpj = function(item) {
     $(item).off('keyup').off('blur').off('drop').data('mask-tipo-documento', 'cnpj').unmask().mask('99.999.999/9999-99');
-    $(item).on("drop", function (event) {
+    $(item).on("drop", function(event) {
         event.preventDefault();
         event.stopPropagation();
     });
-    $(item).on('blur', function () {
+    $(item).on('blur', function() {
         if ($(this).val() && !valida_cnpj($(this).val())) {
             Mensagem.deErro('Número de CNPJ inválido.');
             $(this).val('');
         }
     });
-    $(item).on('keyup', function (e) {
+    $(item).on('keyup', function(e) {
         verificarCpfCnpj(this);
         if (e.keyCode === 13) {
             $(this).trigger('blur');
@@ -301,8 +301,8 @@ configInputCnpj = function (item) {
 /**
  * Cria componente de CPF/CNPJ
  */
-$.fn.tipoDocumento = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoDocumento = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -319,19 +319,19 @@ $.fn.tipoDocumento = function () {
 /**
  * Cria componente UpperCase sem Acento
  */
-$.fn.tipoUpper = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoUpper = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
             $(item).attr('data-js-componente', 'tipoUpper');
         }
 
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             $(item).val($(item).val().toUpperCase().retiraAcentos().retiraEspeciaisCustom().replace(/[~´`\b]/g, ""));
         });
 
-        $(item).on("blur", function (event) {
+        $(item).on("blur", function(event) {
             event.preventDefault();
             $(item).val($(item).val().toUpperCase().retiraAcentos().retiraEspeciaisCustom().replace(/[~´`\b]/g, "").rtrim());
             event.stopPropagation();
@@ -341,8 +341,8 @@ $.fn.tipoUpper = function () {
 /**
  * Cria componente de Telefone
  */
-$.fn.tipoTelefone = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoTelefone = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -353,11 +353,11 @@ $.fn.tipoTelefone = function () {
                 .inputGroup('before')
                 .find('.input-group-addon')
                 .icone('glyphicons phone_alt icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -367,8 +367,8 @@ $.fn.tipoTelefone = function () {
 /**
  * Cria componente de Telefone com DDD
  */
-$.fn.tipoTelefoneDDD = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoTelefoneDDD = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -379,11 +379,11 @@ $.fn.tipoTelefoneDDD = function () {
                 .inputGroup('before')
                 .find('.input-group-addon')
                 .icone('glyphicons phone_alt icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -393,8 +393,8 @@ $.fn.tipoTelefoneDDD = function () {
 /**
  * Cria componente de Celular
  */
-$.fn.tipoCelular = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoCelular = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -405,11 +405,11 @@ $.fn.tipoCelular = function () {
                 .inputGroup('before')
                 .find('.input-group-addon')
                 .icone('glyphicons iphone icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -419,8 +419,8 @@ $.fn.tipoCelular = function () {
 /**
  * Cria componente de Celular com DDD
  */
-$.fn.tipoCelularDDD = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoCelularDDD = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -431,11 +431,11 @@ $.fn.tipoCelularDDD = function () {
                 .inputGroup('before')
                 .find('.input-group-addon')
                 .icone('glyphicons iphone icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -449,8 +449,8 @@ $.fn.tipoCelularDDD = function () {
  * data-date-max="<#seletor>" - Define um componente de data final para atuar junto deste componente
  * date-max-day-interval="<dias>" - Define um intervalo máximo de dias para 2 componentes de datas que atuam juntos (necessário aplicar em ambos)
  */
-$.fn.tipoData = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoData = function() {
+    $.each($(this), function(i, item) {
         // Se não for um input, no caso de um label, span, strong, div ...
         if (item.tagName != 'INPUT') {
             $(item).text(Data.formatar($(item).text()));
@@ -466,7 +466,7 @@ $.fn.tipoData = function () {
                 .inputGroup('before')
                 .find('.input-group-addon:last')
                 .icone('glyphicons calendar icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
@@ -484,7 +484,7 @@ $.fn.tipoData = function () {
 
         if ($(item).data('date-min')) {
             // Change do componente
-            $(item).parent().on("dp.change", function (e) {
+            $(item).parent().on("dp.change", function(e) {
                 var component = $(this).data('DateTimePicker'); // DateTimePicker da data atual
                 var $componentInput = $(this).find(':input[type=text]'); // <input> da data atual
                 var $minComponentInput = $($componentInput.data('date-min')); // <input> da data inicial
@@ -516,7 +516,7 @@ $.fn.tipoData = function () {
         }
         if ($(item).data('date-max')) {
             // Change do componente
-            $(item).parent().on("dp.change", function (e) {
+            $(item).parent().on("dp.change", function(e) {
                 var component = $(this).data('DateTimePicker'); // DateTimePicker da data atual
                 var $componentInput = $(this).find(':input[type=text]'); // <input> da data atual
                 var $maxComponentInput = $($componentInput.data('date-max')); // <input> da data final
@@ -547,13 +547,13 @@ $.fn.tipoData = function () {
                 }
             });
         }
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
         });
         // Quando o input sair de foco
-        $(item).blur(function () {
+        $(item).blur(function() {
             var arData = $(this).val() ? $(this).val().split('/') : [];
             if (arData.length === 3 || !$(this).parent().data('DateTimePicker').getDate()) {
                 var date = new Date(arData[2], arData[1] - 1, arData[0]);
@@ -626,8 +626,8 @@ $.fn.tipoData = function () {
 /**
  * Cria componente de Hora
  */
-$.fn.tipoHora = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoHora = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -638,11 +638,11 @@ $.fn.tipoHora = function () {
                 .inputGroup('before')
                 .find('.input-group-addon:last')
                 .icone('glyphicons clock icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).blur(function (e) {
+        $(item).blur(function(e) {
             if (!$(this).val().match(/^(([0-1][0-9]|2[0-3])$|([0-1][0-9]|2[0-3]):[0-5][0-9])$|(([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9])$/)) {
                 $(this).val('');
             }
@@ -655,12 +655,12 @@ $.fn.tipoHora = function () {
                 Mensagem.deErro('Hora de Agendamento Final fora do permitido.(Deve ser Inferior ou Igual a ' + $(this).data('hour-max') + 'h )');
             }
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
         });
-        $(item).parent().find('.input-group-addon').click(function (e) {
+        $(item).parent().find('.input-group-addon').click(function(e) {
             $(item).focus();
         });
 
@@ -671,8 +671,8 @@ $.fn.tipoHora = function () {
 /**
  * Cria componente de Hora com Segundos
  */
-$.fn.tipoHoraSegundos = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoHoraSegundos = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -683,16 +683,16 @@ $.fn.tipoHoraSegundos = function () {
                 .inputGroup('before')
                 .find('.input-group-addon:last')
                 .icone('glyphicons clock icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).blur(function (e) {
+        $(item).blur(function(e) {
             if (!$(this).val().match(/^(([0-1][0-9]|2[0-3])$|([0-1][0-9]|2[0-3]):[0-5][0-9])$|(([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9])$/)) {
                 $(this).val('');
             }
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -705,8 +705,8 @@ $.fn.tipoHoraSegundos = function () {
 /**
  * Cria componente de Data e Hora
  */
-$.fn.tipoDataHora = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoDataHora = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -717,11 +717,11 @@ $.fn.tipoDataHora = function () {
                 .inputGroup('before')
                 .find('.input-group-addon:last')
                 .icone('glyphicons calendar icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -730,7 +730,7 @@ $.fn.tipoDataHora = function () {
         var config = {'language': 'pt-BR'};
         $(item).parent().datetimepicker(config);
 
-        $(item).change(function () {
+        $(item).change(function() {
             if ($(this).val() !== $(this).val().toDate().getDataHora()) {
                 $(this).val('');
             }
@@ -740,8 +740,8 @@ $.fn.tipoDataHora = function () {
 /**
  * Cria componente de Data e Hora com Segundos
  */
-$.fn.tipoDataHoraSegundos = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoDataHoraSegundos = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -752,11 +752,11 @@ $.fn.tipoDataHoraSegundos = function () {
                 .inputGroup('before')
                 .find('.input-group-addon:last')
                 .icone('halflings calendar icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -765,7 +765,7 @@ $.fn.tipoDataHoraSegundos = function () {
         var config = {'language': 'pt-BR', 'useSeconds': true};
         $(item).parent().datetimepicker(config);
 
-        $(item).change(function () {
+        $(item).change(function() {
             if ($(this).val() !== $(this).val().toDate().getDataHoraSegundo()) {
                 $(this).val('');
             }
@@ -773,8 +773,8 @@ $.fn.tipoDataHoraSegundos = function () {
 
     });
 };
-$.fn.tipoMes = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoMes = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -785,11 +785,11 @@ $.fn.tipoMes = function () {
                 .inputGroup('before')
                 .find('.input-group-addon:last')
                 .icone('glyphicons calendar icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -809,7 +809,7 @@ $.fn.tipoMes = function () {
         };
 
         //$(item).parent().datetimepicker(config);
-        $(item).on('change', function () {
+        $(item).on('change', function() {
             var arMes = $(this).val().split('/');
             var mes = parseInt(arMes[0], 10);
             var ano = parseInt(arMes[1], 10);
@@ -826,8 +826,8 @@ $.fn.tipoMes = function () {
 /**
  * Cria componente de Cep
  */
-$.fn.tipoCep = function () {
-    $.each($(this), function (i, item) {
+$.fn.tipoCep = function() {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -835,11 +835,11 @@ $.fn.tipoCep = function () {
         }
         $(item).mask(Sistema.mascaras.cep[0]);
 
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -850,12 +850,12 @@ $.fn.tipoCep = function () {
 /**
  * Cria componente de Valor Monetário
  */
-$.fn.tipoMoeda = function (seletor) {
+$.fn.tipoMoeda = function(seletor) {
     if (seletor) {
         $(this).find(seletor).tipoMoeda();
         return;
     }
-    $.each($(this), function (i, item) {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -871,11 +871,11 @@ $.fn.tipoMoeda = function (seletor) {
                 .inputGroup('before')
                 .find('.input-group-addon:last')
                 .icone('glyphicons money icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -890,12 +890,12 @@ $.fn.tipoMoeda = function (seletor) {
 /**
  * Cria componente de Valor Numérico
  */
-$.fn.tipoNumerico = function (seletor) {
+$.fn.tipoNumerico = function(seletor) {
     if (seletor) {
         $(this).find(seletor).tipoNumerico();
         return;
     }
-    $.each($(this), function (i, item) {
+    $.each($(this), function(i, item) {
         if (item.tagName != 'INPUT') {
             $(item).text(Numerico.formatar($(item).text()));
             return;
@@ -908,10 +908,10 @@ $.fn.tipoNumerico = function (seletor) {
 
         $(item).addClass('form-control');
 //        $(item).maskMoney({'thousands': '', 'decimal': '', 'precision': 0});
-        $(item).bind('paste', function (event) {
+        $(item).bind('paste', function(event) {
             var $this = $(this);
             var value = $this.val();
-            setTimeout(function () {
+            setTimeout(function() {
                 var match = $this.val().match(/([0-9])/g);
                 $this.val(match ? match.join('') : '');
 //                $this.val($this.val().replace(/\s/, ''));
@@ -922,7 +922,7 @@ $.fn.tipoNumerico = function (seletor) {
 //                }
             }, 0);
         });
-        $(item).keyup(function (e) {
+        $(item).keyup(function(e) {
             $(this).removeClass('text-success').removeClass('text-danger');
             if ($(this).attr('data-max-value')) {
                 if (parseInt($(this).attr('data-max-value')) < parseInt($(this).val())) {
@@ -939,15 +939,15 @@ $.fn.tipoNumerico = function (seletor) {
                 }
             }
         });
-        $(this).blur(function (e) {
+        $(this).blur(function(e) {
             $(this).removeClass('text-success').removeClass('text-danger');
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
         });
-        $(item).change(function (e) {
+        $(item).change(function(e) {
             if ($(this).attr('data-max-value')) {
                 if (parseInt($(this).attr('data-max-value')) < parseInt($(this).val())) {
                     $(this).val('');
@@ -961,7 +961,7 @@ $.fn.tipoNumerico = function (seletor) {
                 }
             }
         });
-        $(item).keydown(function (e) {
+        $(item).keydown(function(e) {
             // Permissão para: backspace, delete, tab, escape, enter and .
             if ($.inArray(e.keyCode, [46, 8, 9, 27, 13/*, 110 , 190*/]) !== -1 ||
                     // Allow: Ctrl+A
@@ -977,14 +977,14 @@ $.fn.tipoNumerico = function (seletor) {
                         e.preventDefault();
                     }
                 });
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
     });
 };
-$.fn.tipoFloat = function () {
-    ponto = function (key) {
+$.fn.tipoFloat = function() {
+    ponto = function(key) {
         try {
             navigator.userAgent.match(/windows/i).length;
             switch (true) {
@@ -1001,10 +1001,10 @@ $.fn.tipoFloat = function () {
             return (key === 190 || key === 110);
         }
     }
-    zero = function (key) {
+    zero = function(key) {
         return (key === 96 || key === 48);
     }
-    $.each($(this), function (i, item) {
+    $.each($(this), function(i, item) {
         if ($(item).attr('data-js-componente')) {
             return;
         } else {
@@ -1016,11 +1016,11 @@ $.fn.tipoFloat = function () {
                 .inputGroup('before')
                 .find('.input-group-addon:last')
                 .icone('glyphicons calculator icon-purple');
-        $(item).on("drop", function (event) {
+        $(item).on("drop", function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
-        $(this).keyup(function (e) {
+        $(this).keyup(function(e) {
             if (ponto(e.keyCode)) {
                 return true;
             }
@@ -1034,13 +1034,13 @@ $.fn.tipoFloat = function () {
                 }
             }
         });
-        $(this).blur(function () {
+        $(this).blur(function() {
             $(this).val(parseFloat($(this).val()));
             if ($(this).val() === 'NaN') {
                 $(this).val('');
             }
         });
-        $(item).keypress(function (e) {
+        $(item).keypress(function(e) {
             if (e.keyCode === 13) {
                 $(this).trigger('blur');
             }
@@ -1050,9 +1050,9 @@ $.fn.tipoFloat = function () {
          .find('.input-group-addon:last').html('123');*/
     });
 };
-$.fn.obrigatorio = function (is) {
+$.fn.obrigatorio = function(is) {
     if (is) {
-        $.each($(this), function () {
+        $.each($(this), function() {
             $(this).addClass('obrigatorio');
             var $label = $(this).parents('.form-group:first').find('label:first');
             if (!$label.find('span.obrigatorio')[0]) {
@@ -1060,7 +1060,7 @@ $.fn.obrigatorio = function (is) {
             }
         });
     } else {
-        $.each($(this), function () {
+        $.each($(this), function() {
             $(this).removeClass('obrigatorio');
             var $formGroup = $(this).parents('.form-group:first');
             if (!$formGroup.find(':input.obrigatorio, .listagem.obrigatorio')[0]) {
@@ -1070,18 +1070,18 @@ $.fn.obrigatorio = function (is) {
         });
     }
 };
-$.fn.validar = function (fn, seletor) {
+$.fn.validar = function(fn, seletor) {
     var erros = {
         pilha: [],
         input: null,
-        empilhar: function (input, msg) {
+        empilhar: function(input, msg) {
             if (!this.pilha) {
                 this.input = input;
             }
             this.pilha.push(msg);
         }
     };
-    $.each($(this).find(seletor ? seletor : ':input'), function (i, input) {
+    $.each($(this).find(seletor ? seletor : ':input'), function(i, input) {
         if ($(input).is('.obrigatorio') && !$(input).val()) {
             erros.pilha.push(input);
             if (!erros.input) {
@@ -1092,7 +1092,7 @@ $.fn.validar = function (fn, seletor) {
             fn($(input), erros);
         }
     });
-    $.each($(this).find('.listagem.obrigatorio, .listagem-multivalorada.obrigatorio'), function (i, listagem) {
+    $.each($(this).find('.listagem.obrigatorio, .listagem-multivalorada.obrigatorio'), function(i, listagem) {
         if (!$(listagem).children()[0]) {
             erros.pilha.push(listagem);
         }
@@ -1109,38 +1109,38 @@ $.fn.validar = function (fn, seletor) {
     }
     return true;
 };
-$.fn.pesquisa = function (options) {
+$.fn.pesquisa = function(options) {
     var $this = $(this);
     var options = $.extend({
         url: '',
-        element: function () {
+        element: function() {
             return $this;
         },
-        voObject: function () {
+        voObject: function() {
             return {};
         },
-        campos: function () {
+        campos: function() {
             return this.element().find('.campos');
         },
-        listaOpcoes: function () {
+        listaOpcoes: function() {
             return this.element().find('.listagem');
         },
-        templateItem: function () {
+        templateItem: function() {
             return $();
         },
-        init: function () {
+        init: function() {
             var that = this;
-            this.templateItem().click(function () {
+            this.templateItem().click(function() {
                 this.campos().atribuir($(this).extrair(that.voObject()));
             });
-            this.botaoPesquisar().click(function () {
+            this.botaoPesquisar().click(function() {
                 this.listaOpcoes().iterar(this.templateItem(), Ajax.syncrono(this.url, this.campos().extrair(this.voObject())).data, true);
             });
         }
     }, options);
     options.init();
 };
-$.fn.componenteDeSelecao = function (options, val) {
+$.fn.componenteDeSelecao = function(options, val) {
     var $this = $(this);
     if (typeof options === 'string') {
         switch (options) {
@@ -1165,71 +1165,71 @@ $.fn.componenteDeSelecao = function (options, val) {
 
     var options = $.extend({
         url: '',
-        elemento: function () {
+        elemento: function() {
             return $this;
         },
-        botaoPesquisar: function () {
+        botaoPesquisar: function() {
             return this.elemento().find('.pesquisar');
         },
-        botaoLimpar: function () {
+        botaoLimpar: function() {
             return this.elemento().find('.limpar');
         },
-        voObject: function () {
+        voObject: function() {
             return new Object();
         },
-        exibicao: function () {
+        exibicao: function() {
             return this.elemento().find('.exibicao');
         },
-        escopoListagem: function () {
+        escopoListagem: function() {
             return this.elemento().find('.escopo-listagem');
         },
-        listagemDeOpcoes: function () {
+        listagemDeOpcoes: function() {
             return this.escopoListagem().find('.listagem');
         },
-        templateItemListagem: function () {
+        templateItemListagem: function() {
             return $('.templates .js-tpl-item');
         },
-        campos: function () {
+        campos: function() {
             return this.elemento().find('.campos');
         },
-        travarCampos: function () {
+        travarCampos: function() {
             this.campos().find("input, select, textarea").readOnly(true);
         },
-        desTravarCampos: function () {
+        desTravarCampos: function() {
             this.campos().find("input, select, textarea").readOnly(false);
         },
-        preencherCampos: function (vo) {
+        preencherCampos: function(vo) {
             if (this.campos()[0]) {
                 this.campos().atribuir(vo);
             }
         },
-        preencherExibicao: function (vo) {
+        preencherExibicao: function(vo) {
             if (this.exibicao()[0]) {
                 this.exibicao().atribuir(vo).show();
             }
         },
-        limparExibicao: function () {
+        limparExibicao: function() {
             this.exibicao().atribuir(this.voObject()).hide();
         },
-        validarPesquisa: function (vo) {
+        validarPesquisa: function(vo) {
             return true;
         },
-        preencherListagem: function (colecao) {
+        preencherListagem: function(colecao) {
             this.listagemDeOpcoes().iterar(this.templateItemListagem(), colecao, true);
         },
-        ativarBotaoPesquisar: function () {
+        ativarBotaoPesquisar: function() {
             this.botaoPesquisar().prop('disabled', true);
             this.botaoPesquisar().find('span:first').data('search', this.botaoPesquisar().find('span:first').hasClass('search'));
             this.botaoPesquisar().find('span:first').addClass('loading').removeClass('search');
         },
-        desativarBotaoPesquisar: function () {
+        desativarBotaoPesquisar: function() {
             this.botaoPesquisar().prop('disabled', false);
             this.botaoPesquisar().find('span:first').removeClass('loading');
             if (this.botaoPesquisar().find('span:first').data('search')) {
                 this.botaoPesquisar().find('span:first').addClass('search');
             }
         },
-        pesquisar: function () { //--
+        pesquisar: function() { //--
             var vo = this.campos().extrair(this.voObject());
             if (!this.validarPesquisa(vo)) {
                 return;
@@ -1241,7 +1241,7 @@ $.fn.componenteDeSelecao = function (options, val) {
                 dataType: 'json',
                 type: 'get',
                 data: vo
-            }).done(function (_data) {
+            }).done(function(_data) {
                 var dados = Sistema.validarJsonTransport(_data);
                 if (dados) {
                     that.preencherListagem(dados.data);
@@ -1251,7 +1251,7 @@ $.fn.componenteDeSelecao = function (options, val) {
                 }
             });
         },
-        apresentarListagem: function (dados) {
+        apresentarListagem: function(dados) {
             if (dados.data.length) {
                 this.escopoListagem().show();
             } else {
@@ -1259,10 +1259,10 @@ $.fn.componenteDeSelecao = function (options, val) {
                 Message.showWarning(Texto.nenhumResultado);
             }
         },
-        aoPesquisar: function () {
+        aoPesquisar: function() {
 
         },
-        limpar: function () {
+        limpar: function() {
             this.preencherCampos(this.voObject());
             this.desTravarCampos();
             this.preencherExibicao(this.voObject());
@@ -1271,10 +1271,10 @@ $.fn.componenteDeSelecao = function (options, val) {
             this.botaoLimpar().hide();
             this.aoLimpar();
         },
-        aoLimpar: function () {
+        aoLimpar: function() {
 
         },
-        selecionarItem: function ($item) {
+        selecionarItem: function($item) {
             var vo = $item.extrair(this.voObject());
             this.preencherCampos(vo);
             this.travarCampos();
@@ -1286,18 +1286,18 @@ $.fn.componenteDeSelecao = function (options, val) {
             this.listagemDeOpcoes().html('');
             this.aoSelecionar($item, vo);
         },
-        aoSelecionar: function ($item, vo) {
+        aoSelecionar: function($item, vo) {
 
         },
-        init: function () {
+        init: function() {
             var that = this;
-            this.botaoPesquisar().click(function () {
+            this.botaoPesquisar().click(function() {
                 that.pesquisar();
             });
-            this.botaoLimpar().click(function () {
+            this.botaoLimpar().click(function() {
                 that.limpar();
             }).hide();
-            this.templateItemListagem().click(function () {
+            this.templateItemListagem().click(function() {
                 that.selecionarItem($(this));
 
             });
@@ -1310,7 +1310,7 @@ $.fn.componenteDeSelecao = function (options, val) {
  * @param {Object} config
  * @returns {Void}
  */
-$.fn.listagemDeEdicao = function (config, value) {
+$.fn.listagemDeEdicao = function(config, value) {
     var $this = $(this);
     if (typeof config === 'string') {
         switch (config) {
@@ -1363,61 +1363,61 @@ $.fn.listagemDeEdicao = function (config, value) {
         /**
          * Inicialização dos eventos
          */
-        init: function () {
+        init: function() {
             var objOptions = this;
-            $this.find(this.bntAdicionar).click(function () {
+            $this.find(this.bntAdicionar).click(function() {
                 objOptions.incluir();
             });
-            $this.find(this.btnLimpar).click(function () {
+            $this.find(this.btnLimpar).click(function() {
                 objOptions.limpar($(this));
             });
-            $this.find(this.btnRemover).click(function () {
+            $this.find(this.btnRemover).click(function() {
                 objOptions.excluir($(this));
             });
-            $this.find(this.btnEditar).click(function () {
+            $this.find(this.btnEditar).click(function() {
                 objOptions.editar($(this));
             });
             this.carregarColecao();
             this.aposInit();
         },
-        carregarColecao: function (colecao) {
+        carregarColecao: function(colecao) {
             colecao = colecao || this.colecao;
             this.listagem().iterar(this.template(), colecao, true);
         },
         /**
          * Retona o objeto de dados utilizado para controlar a listagem
          */
-        voObject: function () {
+        voObject: function() {
             return new Object();
         },
         /**
          * Retorna o grupo de campos do formulario da listagem
          */
-        campos: function () {
+        campos: function() {
             return $this.find(this.grupoCampos);
         },
         /**
          * Retorna a listagem de dados
          */
-        listagem: function () {
+        listagem: function() {
             return $this.find(this.grupoListagem);
         },
         /**
          * Retorna o template das linhas, caso seja passado o elemento retorna o template da linha do elemento
          */
-        template: function ($el) {
+        template: function($el) {
             return $el ? $el.parents(this.tplItem + ':first') : $this.find('.templates ' + this.tplItem);
         },
         /**
          * Realiza o foco no primeiro campo editavel do formulario da listagem
          */
-        focar: function () {
+        focar: function() {
             return this.campos().find(':input:visible:first').focus();
         },
         /**
          * Limpa os campos do formulario da listagem
          */
-        limpar: function () {
+        limpar: function() {
             if (this.campos().data('edicao')) {
                 this.campos().data('edicao').removeClass('info');
                 this.campos().data('edicao', false);
@@ -1429,7 +1429,7 @@ $.fn.listagemDeEdicao = function (config, value) {
         /**
          * Prepara a linha da listagem para a edição
          */
-        editar: function ($el) {
+        editar: function($el) {
             this.listagem().children().removeClass('info');
             var $tpl = this.template($el);
             if (!this.validarEdicao($tpl, $tpl.extrair(this.voObject()))) {
@@ -1443,7 +1443,7 @@ $.fn.listagemDeEdicao = function (config, value) {
         /**
          * Exclui os dados da listagem
          */
-        excluir: function ($el) {
+        excluir: function($el) {
             var $tpl = this.template($el);
             if (!this.validarExclusao($tpl, $tpl.extrair(this.voObject()))) {
                 return;
@@ -1457,7 +1457,7 @@ $.fn.listagemDeEdicao = function (config, value) {
         /**
          * Inclui os dados na listagem
          */
-        incluir: function () {
+        incluir: function() {
             var obj = this.campos().extrair(this.voObject());
             var $tpl = this.campos().data('edicao') ? this.campos().data('edicao') : this.template().clone(true);
             if (!this.validarInclusao($tpl, obj, this.campos().data('edicao') ? 'edicao' : 'inclusao')) {
@@ -1471,26 +1471,26 @@ $.fn.listagemDeEdicao = function (config, value) {
             this.aposIncluir($tpl);
             this.limpar();
         },
-        aposIncluir: function ($tpl) {
+        aposIncluir: function($tpl) {
         },
-        aposExcluir: function ($tpl) {
+        aposExcluir: function($tpl) {
         },
-        aposLimpar: function () {
+        aposLimpar: function() {
         },
-        aposInit: function () {
+        aposInit: function() {
         },
         /**
          * Valida a inclusao da linha na listagem
          * @param {Object} objeto definido no método voObject
          * @param {String} informa se é "inclusao" ou "edicao"
          */
-        validarInclusao: function ($tpl, voObject, tipo) {
+        validarInclusao: function($tpl, voObject, tipo) {
             return true;
         },
-        validarExclusao: function ($tpl, voObject) {
+        validarExclusao: function($tpl, voObject) {
             return true;
         },
-        validarEdicao: function ($tpl, voObject) {
+        validarEdicao: function($tpl, voObject) {
             return true;
         }
     }, config);
@@ -1501,26 +1501,26 @@ $.fn.listagemDeEdicao = function (config, value) {
 
     }
 };
-var defaultListagemAgrupada = {colecao: [], template: {}, titulo: {}, callback: {}, fnInit: function (arDados) {
-    }, fnFinish: function (arDados) {
+var defaultListagemAgrupada = {colecao: [], template: {}, titulo: {}, callback: {}, fnInit: function(arDados) {
+    }, fnFinish: function(arDados) {
     }};
 /**
  * Cria a listagem agrupada por niveis hierárquicos
  * @param {Object} options
  * @returns {Void}
  */
-$.fn.listagemAgrupada = function (options) {
+$.fn.listagemAgrupada = function(options) {
 
     options = $.extend(defaultListagemAgrupada, options);
-    $.each(options.template, function () {
+    $.each(options.template, function() {
         $(this).find('[data-js-componente="tipoMoeda"]').removeAttr('data-js-componente');
     });
-    $.each(options.titulo, function () {
+    $.each(options.titulo, function() {
         $(this).find('[data-js-componente="tipoMoeda"]').removeAttr('data-js-componente');
     });
     var $this = $(this);
     options.fnInit(options);
-    var listar = function (arDados, lbl, nvl) {
+    var listar = function(arDados, lbl, nvl) {
         lbl = lbl || 'treegrid';
         nvl = nvl || 1;
         var pai = lbl.replace('treegrid', 'treegrid-parent');
@@ -1552,17 +1552,17 @@ $.fn.listagemAgrupada = function (options) {
         expanderExpandedClass: 'halflings folder-open purple-folder',
         expanderCollapsedClass: 'halflings folder-close purple-folder'
     });
-    $this.find('.treegrid-collapse-folder').click(function () {
+    $this.find('.treegrid-collapse-folder').click(function() {
         $this.treegrid('collapseAll');
     });
-    $this.find('.treegrid-expand-folder').click(function () {
+    $this.find('.treegrid-expand-folder').click(function() {
         $this.treegrid('expandAll');
     });
     options.fnFinish(options);
     $(this).find('.moeda').tipoMoeda();
 };
-$.fn.removerAcessos = function (acessos) {
-    $.each($(this).find('[data-acesso]'), function () {
+$.fn.removerAcessos = function(acessos) {
+    $.each($(this).find('[data-acesso]'), function() {
         var liberado = false;
         if ($(this).attr('data-acesso')) {
             acessosElemento = $(this).attr('data-acesso').split(',');
@@ -1591,8 +1591,8 @@ $.fn.removerAcessos = function (acessos) {
         $(this).removeAttr('data-acesso-remover');
     });
 };
-$.fn.readOnly = function (is) {
-    $.each($(this), function (i, item) {
+$.fn.readOnly = function(is) {
+    $.each($(this), function(i, item) {
         if ($(item).is('select')) {
             $(item).find('option:not(:selected)')[is ? 'attr' : 'removeAttr']('disabled', 'disabled');
         } else {
@@ -1605,7 +1605,7 @@ $.fn.readOnly = function (is) {
  * @param {int} time
  * @returns {void}
  */
-$.fn.ancorar = function (time) {
+$.fn.ancorar = function(time) {
     time = (time === undefined ? 100 : time);
     $('html, body').animate({
         scrollTop: $(this).offset().top
@@ -1613,14 +1613,14 @@ $.fn.ancorar = function (time) {
 };
 $.fn.anchor = $.fn.ancorar;
 
-var voPagina = function () {
+var voPagina = function() {
     this.atualPagina = null;
     this.totalPagina = null;
     this.tamanhoPagina = null;
     this.totalRegistros = null;
 };
 
-$.fn.paginador = function (options, voPag) {
+$.fn.paginador = function(options, voPag) {
     if (typeof options === 'string') {
         switch (options) {
             case 'reset':
@@ -1679,38 +1679,38 @@ $.fn.paginador = function (options, voPag) {
     $this.data('antes', new voPagina());
     options = $.extend({
         tamanhos: $this.attr('data-paginador-tamanhos') ? eval($this.attr('data-paginador-tamanhos')) : [20, 50, 100, 250],
-        fn: $this.attr('data-paginador-callback') ? eval($this.attr('data-paginador-callback')) : function () {
+        fn: $this.attr('data-paginador-callback') ? eval($this.attr('data-paginador-callback')) : function() {
         },
         /**
          * Retorna o elemento originário
          * @returns {jQuery}
          */
-        elemento: function () {
+        elemento: function() {
             return $this;
         },
         /**
          * Extrai a página do componente
          * @returns {voPagina}
          */
-        getVoPagina: function () {
+        getVoPagina: function() {
             return this.contexto().extrair(new voPagina());
         },
         /**
          * Retorna o template do paginador
          * @returns {jQuery}
          */
-        getTemplatePaginador: function () {
+        getTemplatePaginador: function() {
             return $('.templates .paginador:not(.tamanho)').clone(true);
         },
         /**
          * Retorna o template do configurador de tamanho da página
          * @returns {jQuery}
          */
-        getTemplateItemTamanhoPagina: function (tamanho) {
+        getTemplateItemTamanhoPagina: function(tamanho) {
             var that = this;
             var $tpl = $('.templates .paginador.tamanho .por-pagina').clone(true);
             $tpl.attr('data-paginador-tamanho-pagina', tamanho);
-            $tpl.click(function (event) {
+            $tpl.click(function(event) {
                 event.preventDefault();
                 $this.data('antes', that.getVoPagina());
                 that.contexto().atribuir({
@@ -1725,7 +1725,7 @@ $.fn.paginador = function (options, voPag) {
             $tpl.atribuir({'nrTamanho': tamanho});
             return $tpl;
         },
-        apontarRegistrosPorPagina: function () {
+        apontarRegistrosPorPagina: function() {
             $this.find('.active').removeClass('active');
             $this.find('.por-pagina [data-nrTamanho="' + this.getPagTamanho() + '"]').parents('.por-pagina').addClass('active');
         },
@@ -1733,72 +1733,72 @@ $.fn.paginador = function (options, voPag) {
          * Retorna o contexto do componente
          * @returns {jQuery}
          */
-        contexto: function () {
+        contexto: function() {
             return this.elemento().parent();
         },
         /**
          * Retorna o botão anterior do componente
          * @returns {jQuery}
          */
-        btnAnterior: function () {
+        btnAnterior: function() {
             return this.contexto().find('.paginador-pag-anterior');
         },
         /**
          * Retorna o botão posterior do componente
          * @returns {jQuery}
          */
-        btnPosterior: function () {
+        btnPosterior: function() {
             return this.contexto().find('.paginador-pag-posterior');
         },
-        itemPagTamanho: function () {
+        itemPagTamanho: function() {
             return $('.templates .paginador.tamanho');
         },
-        setVoPagina: function (pag) {
+        setVoPagina: function(pag) {
             this.contexto().atribuir(pag);
         },
-        getPagTamanho: function () {
+        getPagTamanho: function() {
             return parseInt(this.getVoPagina().tamanhoPagina);
         },
-        getPagAtual: function () {
+        getPagAtual: function() {
             return parseInt(this.getVoPagina().atualPagina);
         },
-        getPagTotal: function () {
+        getPagTotal: function() {
             return parseInt(this.getVoPagina().totalPagina);
         },
-        setPagTamanho: function (val) {
+        setPagTamanho: function(val) {
             this.contexto().atribuir({'tamanhoPagina': val});
         },
-        setPagAtual: function (val) {
+        setPagAtual: function(val) {
             this.contexto().atribuir({'atualPagina': val});
         },
-        setPagTotal: function (val) {
+        setPagTotal: function(val) {
             this.contexto().atribuir({'totalPagina': val});
         },
-        irPaginaPosterior: function () {
+        irPaginaPosterior: function() {
             if ((this.getPagAtual() + 1) <= this.getPagTotal()) {
                 $this.data('antes', this.getVoPagina());
                 this.setPagAtual(this.getPagAtual() + 1);
                 this.fn(this.getVoPagina());
             }
         },
-        irPaginaAnterior: function () {
+        irPaginaAnterior: function() {
             if ((this.getPagAtual() - 1) > 0) {
                 $this.data('antes', this.getVoPagina());
                 this.setPagAtual(this.getPagAtual() - 1);
                 this.fn(this.getVoPagina());
             }
         },
-        alterarTamanho: function (tamanho) {
+        alterarTamanho: function(tamanho) {
 
         },
-        init: function () {
+        init: function() {
             var that = this;
             this.elemento().append(this.getTemplatePaginador());
             this.elemento().atribuir({tamanhoPagina: this.tamanhos[0]});
-            this.btnAnterior().click(function () {
+            this.btnAnterior().click(function() {
                 that.irPaginaAnterior();
             });
-            this.btnPosterior().click(function () {
+            this.btnPosterior().click(function() {
                 that.irPaginaPosterior();
             });
             var tamAtual = this.getPagTamanho();
@@ -1818,14 +1818,14 @@ $.fn.paginador = function (options, voPag) {
     }, options);
     options.init();
 };
-$.fn.panelToggleButton = function () {
-    $.each($(this), function (i, item) {
+$.fn.panelToggleButton = function() {
+    $.each($(this), function(i, item) {
         $(item).addClass('glyphicons eye_open pointer icon-purple');
         $(item).attr('title', 'Mostrar/Esconder');
         $(item).tooltip();
         var $panel = $(item).parents('.panel').eq(0);
         if ($panel) {
-            $(item).on('click', function () {
+            $(item).on('click', function() {
                 var $panel = $(this).parents('.panel').eq(0);
                 if ($panel.hasClass('panel-minimized')) {
                     $(this).addClass('eye_open');
@@ -1845,14 +1845,14 @@ $.fn.panelToggleButton = function () {
     });
 };
 
-var Grafico = function (json) {
+var Grafico = function(json) {
     this.attrs = {};
 
-    this.init = function (json) {
+    this.init = function(json) {
         this.attrs = json;
     };
 
-    this.getConfig = function () {
+    this.getConfig = function() {
         return this.attrs;
     };
 
@@ -1867,11 +1867,11 @@ var Grafico = function (json) {
  * Gráfico
  * @param {Grafico} grafico
  */
-$.fn.grafico = function (grafico) {
+$.fn.grafico = function(grafico) {
     var that = this;
     var config = grafico.getConfig();
     config.renderAt = $(that).attr('id');
-    FusionCharts.ready(function () {
+    FusionCharts.ready(function() {
         var conversionChart = new FusionCharts(config);
         conversionChart.render();
     });
@@ -1881,7 +1881,7 @@ $.fn.grafico = function (grafico) {
  * Upload
  * @param {Array} options
  */
-$.fn.upload = function (config) {
+$.fn.upload = function(config) {
     if ($.fn.fileupload && $(this).length) {
         if (config == 'reset') {
             var $fieldset = $(this).parent().parent().parent();
@@ -1912,22 +1912,22 @@ $.fn.upload = function (config) {
             },
             'exts': [],
             'showMessageSuccess': true,
-            'callBackAdd': function (e, data) {
+            'callBackAdd': function(e, data) {
                 return true;
             },
-            'callBackSendFile': function (e, data) {
+            'callBackSendFile': function(e, data) {
                 return true;
             },
-            'callBackSuccess': function (result, textStatus, jqXHR) {
+            'callBackSuccess': function(result, textStatus, jqXHR) {
                 return true;
             },
-            'callBackPreSuccess': function (result, textStatus, jqXHR) {
+            'callBackPreSuccess': function(result, textStatus, jqXHR) {
                 return true;
             },
-            'callBackError': function (result, textStatus, jqXHR) {
+            'callBackError': function(result, textStatus, jqXHR) {
                 Mensagem.deErro("Falha ao tentar enviar arquivo.");
             },
-            'callBackMessageSuccess': function (result, textStatus) {
+            'callBackMessageSuccess': function(result, textStatus) {
 //                Message.showSuccess("Arquivo enviado com sucesso.");
             }
         };
@@ -1939,7 +1939,7 @@ $.fn.upload = function (config) {
         var newConfig = {
             'url': '',
             'dataType': 'json',
-            'add': function (e, data) {
+            'add': function(e, data) {
                 // Options
                 var options = $(e.target).data('file-upload-options');
 
@@ -1972,7 +1972,7 @@ $.fn.upload = function (config) {
 
                 $(e.target).data('file-upload').find('.fileinput-button .description').html('<span class="margin-right-lg filetype ' + icon + '"></span>' + file.name);
                 $(e.target).data('file-upload').siblings('.fileupload-btn-send-file').find('button').removeClass('disabled');
-                $(e.target).data('file-upload').siblings('.fileupload-btn-send-file').find('button').on('click', function () {
+                $(e.target).data('file-upload').siblings('.fileupload-btn-send-file').find('button').on('click', function() {
                     // Return true do callback, se retornar false barrará todo o restande do processamento
                     if (typeof options.callBackSendFile === 'string') {
                         if (!eval(options.callBackSendFile + "(data, this);")) {
@@ -1988,11 +1988,11 @@ $.fn.upload = function (config) {
                     var that = this;
 
                     var ajaxErrorFunction = Sistema.execError;
-                    Sistema.execError = function (event, request) {
+                    Sistema.execError = function(event, request) {
                     };
 
                     // Enviar arquivo
-                    data.submit().always(function (result, textStatus, jqXHR) {
+                    data.submit().always(function(result, textStatus, jqXHR) {
 
                         // Desativar loading
                         Controle.linkStop(Controle.action);
@@ -2042,7 +2042,7 @@ $.fn.upload = function (config) {
                                 options.callBackError(result, textStatus, jqXHR);
                             }
                         }
-                        setTimeout(function () {
+                        setTimeout(function() {
                             Sistema.execError = ajaxErrorFunction;
                         }, 500);
                     });
@@ -2051,7 +2051,7 @@ $.fn.upload = function (config) {
         };
 
         // Apply the plugin
-        $.each($(this), function (i, item) {
+        $.each($(this), function(i, item) {
 //            if (!$(item).is(':visible')) {
 //                return;
 //            }
@@ -2084,31 +2084,31 @@ $.fn.upload = function (config) {
         });
     }
 };
-$.fn.formGroupError = function (timer) {
+$.fn.formGroupError = function(timer) {
     timer = timer ? timer : Message.timeoutDefault;
     var $this = $(this);
     $this.addClass('has-error');
-    setTimeout(function () {
+    setTimeout(function() {
         $this.removeClass('has-error');
     }, timer);
 };
-$.fn.formGroupWarning = function (timer) {
+$.fn.formGroupWarning = function(timer) {
     timer = timer ? timer : Message.timeoutDefault;
     var $this = $(this);
     $this.addClass('has-warning');
-    setTimeout(function () {
+    setTimeout(function() {
         $this.removeClass('has-warning');
     }, timer);
 };
-$.fn.formGroupSuccess = function (timer) {
+$.fn.formGroupSuccess = function(timer) {
     timer = timer ? timer : Message.timeoutDefault;
     var $this = $(this);
     $this.addClass('has-success');
-    setTimeout(function () {
+    setTimeout(function() {
         $this.removeClass('has-success');
     }, timer);
 };
-$.fn.selectConfirm = function (options, value) {
+$.fn.selectConfirm = function(options, value) {
     if (typeof options === 'string') {
         var $tpl = $(this).parents('.js-tpl-select-confirm:first');
         switch (options) {
@@ -2132,59 +2132,59 @@ $.fn.selectConfirm = function (options, value) {
     $(this).after($this);
     $this.find('.js-select-confirm-edition').prepend($(this));
     options = $.extend({
-        component: function () {
+        component: function() {
             return $this;
         },
-        select: function () {
+        select: function() {
             return this.component().find('select');
         },
-        btnCancel: function () {
+        btnCancel: function() {
             return this.component().find('.js-select-cancel');
         },
-        btnConfirm: function () {
+        btnConfirm: function() {
             return this.component().find('.js-select-confirm');
         },
-        btnEdit: function () {
+        btnEdit: function() {
             return this.component().find('.js-select-to-edit');
         },
-        inputLabel: function () {
+        inputLabel: function() {
             return this.component().find('.js-select-label')
         },
-        inputVal: function () {
+        inputVal: function() {
             return this.component().find('.js-select-val')
         },
-        lock: function () {
+        lock: function() {
             this.component().find('.js-select-confirm-selected').show();
             this.component().find('.js-select-confirm-edition').hide();
         },
-        unLock: function () {
+        unLock: function() {
             this.component().find('.js-select-confirm-selected').hide();
             this.component().find('.js-select-confirm-edition').show();
         },
-        onConfirm: function () {
+        onConfirm: function() {
             return true;
         },
-        onCancel: function () {
+        onCancel: function() {
             return true;
         },
-        onEdit: function () {
+        onEdit: function() {
             return true;
         },
-        init: function () {
+        init: function() {
             this.inputVal().attr('name', this.select().attr('name'));
             var opt = this;
-            this.btnEdit().click(function () {
+            this.btnEdit().click(function() {
                 if (opt.onEdit()) {
                     opt.unLock();
                 }
             });
-            this.btnCancel().click(function () {
+            this.btnCancel().click(function() {
                 if (opt.onCancel()) {
                     opt.lock();
                     opt.select().val(opt.inputVal().val());
                 }
             });
-            this.btnConfirm().click(function () {
+            this.btnConfirm().click(function() {
                 if (opt.onConfirm()) {
                     opt.lock();
                     opt.select().selectConfirm('val', opt.select().val());
@@ -2197,19 +2197,19 @@ $.fn.selectConfirm = function (options, value) {
     }, options);
     options.init();
 };
-$.fn.multivalued = function (options) {
+$.fn.multivalued = function(options) {
     var config = $.extend({
         clearVal: true,
         clearName: true,
-        after: function ($input, $item) {
+        after: function($input, $item) {
 
         },
-        validate: function ($list, $input) {
+        validate: function($list, $input) {
             return this.existsValue($list, $input).size() === 0;
         },
-        existsValue: function ($list, $input) {
+        existsValue: function($list, $input) {
             var strFind = $input.val();
-            return $list.find('.js-desc-item-multivalorado').filter(function () {
+            return $list.find('.js-desc-item-multivalorado').filter(function() {
                 return $(this).attr('data-no-accent') === strFind.retiraAcentos().toLowerCase();
             });
         }
@@ -2240,7 +2240,7 @@ $.fn.multivalued = function (options) {
     $(this).data('btn-add', $btnAdd);
     $groupRef.append($btnAdd);
     $groupRef.after($lista);
-    $btnAdd.on('click', function () {
+    $btnAdd.on('click', function() {
         if ((!$(this).data('ref').val()) || (!config.validate($(this).data('lista'), $(this).data('ref')))) {
             return;
         }
@@ -2249,7 +2249,7 @@ $.fn.multivalued = function (options) {
         $clone.find('.js-desc-item-multivalorado').html($(this).data('ref').val());
         $clone.find('.js-val-item-multivalorado').val($(this).data('ref').val());
         $clone.find('.js-val-item-multivalorado').attr('name', $(this).data('ref').attr('data-original-name') + '[]');
-        $clone.find('.js-rem-multivalorado').click(function () {
+        $clone.find('.js-rem-multivalorado').click(function() {
             $(this).parents('.js-tpl-item-multivalorado:first').remove();
         })
         $(this).data('lista').append($clone);
@@ -2260,61 +2260,61 @@ $.fn.multivalued = function (options) {
         $(this).data('ref').focus();
     });
 };
-$.fn.multiple = function (options) {
+$.fn.multiple = function(options) {
     var $this = $(this);
     options = $.extend({
         attrVal: 'val',
         attrDesc: 'desc',
-        element: function () {
+        element: function() {
             return $this;
         },
-        btnCheckAll: function () {
+        btnCheckAll: function() {
             return this.element().find('.js-check-all');
         },
-        btnCheckNone: function () {
+        btnCheckNone: function() {
             return this.element().find('.js-check-none');
         },
-        btnInvert: function () {
+        btnInvert: function() {
             return this.element().find('.js-check-invert');
         },
-        inputSearch: function () {
+        inputSearch: function() {
             return this.element().find('input.js-input-search');
         },
-        checkAll: function () {
+        checkAll: function() {
             this.element().find('input[type="checkbox"]').prop('checked', true);
         },
-        checkNone: function () {
+        checkNone: function() {
             this.element().find('input[type="checkbox"]').prop('checked', false);
         },
-        invert: function () {
-            $.each(this.element().find('input[type="checkbox"]'), function () {
+        invert: function() {
+            $.each(this.element().find('input[type="checkbox"]'), function() {
                 $(this).prop('checked', !$(this).is(':checked'));
             });
         },
-        search: function ($inputSearch, event) {
+        search: function($inputSearch, event) {
             if (!$inputSearch) {
                 this.element().find('.js-tpl-multiple').show();
             }
-            var $list = this.element().find('.js-tpl-multiple').filter(function () {
+            var $list = this.element().find('.js-tpl-multiple').filter(function() {
                 return $(this).find('[data-html-desc]').html().match(new RegExp($inputSearch.val(), 'i'));
             });
             this.element().find('.js-tpl-multiple').hide();
             $list.show();
         },
-        init: function () {
+        init: function() {
             this.element().append($('.js-componentes .js-tpl-multiple-component').clone());
 
             var opt = this;
-            this.btnCheckAll().click(function () {
+            this.btnCheckAll().click(function() {
                 opt.checkAll();
             });
-            this.btnCheckNone().click(function () {
+            this.btnCheckNone().click(function() {
                 opt.checkNone();
             });
-            this.btnInvert().click(function () {
+            this.btnInvert().click(function() {
                 opt.invert();
             });
-            this.inputSearch().keyup(function (event) {
+            this.inputSearch().keyup(function(event) {
                 opt.search($(this), event);
             });
             var colecao = eval(this.element().attr('data-colecao'));
@@ -2325,7 +2325,7 @@ $.fn.multiple = function (options) {
     }, options)
     options.init();
 };
-$.fn.contadorDeTexto = function (config) {
+$.fn.contadorDeTexto = function(config) {
     var options = $.extend({
         'limite': $(this).attr('data-limite') || 3000
     }, config);
@@ -2333,22 +2333,22 @@ $.fn.contadorDeTexto = function (config) {
     var $div = $('<div style="display:none">Limite de caracteres <span></span></div>');
     $(this).data('div', $div);
     $(this).after($div);
-    $(this).blur(function () {
+    $(this).blur(function() {
         $(this).val($(this).val().substring(0, parseInt(options.limite)));
         $(this).data('div').hide();
-    }).on('paste', function () {
+    }).on('paste', function() {
         $(this).data('div').find('span').html($(this).val().length + '/' + options.limite);
         $(this).data('div').show();
         if ($(this).val().length > parseInt(options.limite) - 1) {
             var $this = $(this);
-            setTimeout(function () {
+            setTimeout(function() {
                 $this.val($this.val().substring(0, parseInt(options.limite)));
             }, 0);
         }
-    }).on('focus', function () {
+    }).on('focus', function() {
         $(this).data('div').find('span').html($(this).val().length + '/' + options.limite);
         $(this).data('div').show();
-    }).on('keypress', function (event) {
+    }).on('keypress', function(event) {
         if (event.keyCode === 9 || event.keyCode === 8) {
             $(this).data('div').find('span').html(($(this).val().length - 1) + '/' + options.limite);
             return true;

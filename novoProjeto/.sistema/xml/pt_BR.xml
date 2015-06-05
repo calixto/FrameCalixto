@@ -1,43 +1,43 @@
 <?xml version='1.0' encoding="utf-8" ?>
 <internacionalizacao>
-	<sistema>
-		<titulo>Título da Aplicação</titulo>
-		<subtitulo>Subtítulo</subtitulo>
-	</sistema>
-	<controles>
-		<textos>
-			<texto id="sim">Sim</texto>
-			<texto id="nao">Não</texto>
-			<texto id="botaoNovo">Ir Para Novo Registro</texto>
-			<texto id="botaoGravar">Salvar</texto>
-			<texto id="botaoExcluir">Excluir</texto>
-			<texto id="botaoListagem">Tela de Pesquisa</texto>
-			<texto id="botaoPesquisar">Pesquisar</texto>
-			<texto id="botaoImpressao">Imprimir</texto>
-			<texto id="botaoLimpar">Limpar Campos</texto>
-			<texto id="verPesquisa">Pesquisa</texto>
-			<texto id="verEdicao">Edição</texto>
-			<texto id="verInclusao">Inclusão</texto>
-			<texto id="tituloListagem">Listagem</texto>
-			<texto id="enviar">Enviar Dados</texto>
-			<texto id="paginas">Páginas</texto>
-			<texto id="ajudaPesquisa">Preencha o filtro e clique em pesquisar ou clique em novo para apresentar a tela de inclusão.</texto>
-			<texto id="ajudaEdicao">Altere os dados e clique em gravar ou apenas clique em excluir.</texto>
-			<texto id="ajudaNovo">Preencha os dados e clique em gravar.</texto>
-		</textos>
-	</controles>
-	<mensagens>
-		<mensagem id="gravarSucesso">Registro gravado com sucesso!</mensagem>
-		<mensagem id="excluirSucesso">Registro excluído com sucesso!</mensagem>
-		<mensagem id="registrosNaoEncontrados">Não foram encontrados registros</mensagem>
-		<mensagem id="obrigatorio">O campo [%s] é obrigatório!</mensagem>
-		<mensagem id="repetido">Este registro já está cadastrado!</mensagem>
-		<mensagem id="dependente">Registro [%s] não excluído por possuir registros dependentes!</mensagem>
-		<mensagem id="erroData">Formato de data inválida</mensagem>
-		<mensagem id="erroDia">O Dia [%s] é inválido!</mensagem>
-		<mensagem id="erroMes">O Mês [%s] é inválido!</mensagem>
-		<mensagem id="erroAno">O Ano [%s] é inválido!</mensagem>
-		<mensagem id="erroHora">Hora [%s] inválida!</mensagem>
-		<mensagem id="erroEmail">Email inválido!</mensagem>
-	</mensagens>
+    <sistema>
+        <titulo>Título da Aplicação</titulo>
+        <subtitulo>Subtítulo</subtitulo>
+    </sistema>
+    <controles>
+        <textos>
+            <texto id="sim">Sim</texto>
+            <texto id="nao">Não</texto>
+            <texto id="botaoNovo">Ir Para Novo Registro</texto>
+            <texto id="botaoGravar">Salvar</texto>
+            <texto id="botaoExcluir">Excluir</texto>
+            <texto id="botaoListagem">Tela de Pesquisa</texto>
+            <texto id="botaoPesquisar">Pesquisar</texto>
+            <texto id="botaoImpressao">Imprimir</texto>
+            <texto id="botaoLimpar">Limpar Campos</texto>
+            <texto id="verPesquisa">Pesquisa</texto>
+            <texto id="verEdicao">Edição</texto>
+            <texto id="verInclusao">Inclusão</texto>
+            <texto id="tituloListagem">Listagem</texto>
+            <texto id="enviar">Enviar Dados</texto>
+            <texto id="paginas">Páginas</texto>
+            <texto id="ajudaPesquisa">Preencha o filtro e clique em pesquisar ou clique em novo para apresentar a tela de inclusão.</texto>
+            <texto id="ajudaEdicao">Altere os dados e clique em gravar ou apenas clique em excluir.</texto>
+            <texto id="ajudaNovo">Preencha os dados e clique em gravar.</texto>
+        </textos>
+    </controles>
+    <mensagens>
+        <mensagem id="gravarSucesso">Registro gravado com sucesso!</mensagem>
+        <mensagem id="excluirSucesso">Registro excluído com sucesso!</mensagem>
+        <mensagem id="registrosNaoEncontrados">Não foram encontrados registros</mensagem>
+        <mensagem id="obrigatorio">O campo [%s] é obrigatório!</mensagem>
+        <mensagem id="repetido">Este registro já está cadastrado!</mensagem>
+        <mensagem id="dependente">Registro [%s] não excluído por possuir registros dependentes!</mensagem>
+        <mensagem id="erroData">Formato de data inválida</mensagem>
+        <mensagem id="erroDia">O Dia [%s] é inválido!</mensagem>
+        <mensagem id="erroMes">O Mês [%s] é inválido!</mensagem>
+        <mensagem id="erroAno">O Ano [%s] é inválido!</mensagem>
+        <mensagem id="erroHora">Hora [%s] inválida!</mensagem>
+        <mensagem id="erroEmail">Email inválido!</mensagem>
+    </mensagens>
 </internacionalizacao>

@@ -44,6 +44,7 @@ class visualizacaoPadrao extends visualizacao {
     function mostrar($pagina = null) {
 //		$this->mensageria = $this->pegar(definicaoPasta::tema().'/mensageria.phtml');
         $templatePadrao = "{$this->__templateDir}/{$this->__controle}.phtml";
+        $parametros = $this->pegar(definicaoPasta::tema() ."parametros.phtml");
         $template = false;
         switch (true) {
             case $pagina:
@@ -90,10 +91,10 @@ class visualizacaoPadrao extends visualizacao {
             throw new erroInclusao("Template não encontrado! {$templatePadrao}");
         }
         if (controle::requisicaoAjax()) {
-            echo $pagina;
+            echo $parametros.$pagina;
             return;
         }
-        $this->conteudo = $pagina;
+        $this->conteudo = $parametros.$pagina;
         if (definicaoArquivo::pegarHtmlPadrao()) {
             echo $this->pegar(definicaoArquivo::pegarHtmlPadrao());
         } else {

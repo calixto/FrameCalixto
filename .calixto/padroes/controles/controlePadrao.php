@@ -32,6 +32,7 @@ class controlePadrao extends controle {
      */
     public function criarVisualizacaoPadrao() {
         $this->visualizacao = new visualizacaoPadrao($this);
+        $this->visualizacao->_parametroJs = new ArrayObject([]);
         $this->visualizacao->baseUri = false;
         //$this->visualizacao->baseUri            = $_SERVER['SCRIPT_NAME'];
         $this->visualizacao->nomeLogado = sessaoSistema::tem('usuario') ? sessaoSistema::pegar('usuario')->valorDescricao() : 'Visitante';
@@ -156,6 +157,11 @@ class controlePadrao extends controle {
         } catch (erro $e) {
             throw $e;
         }
+    }
+    
+    public function parametroJs($nome, $valor){
+        $this->visualizacao->_parametroJs->offsetSet($nome, $valor);
+        //$this->visualizacao->{'_parametroJs'}[$nome] = $valor;
     }
 
     /**
