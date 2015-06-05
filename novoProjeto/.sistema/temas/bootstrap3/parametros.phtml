@@ -1,0 +1,6 @@
+<script class="js-controlador-init">
+    <?php foreach($_parametroJs as $_idx => $_jsP ){
+        echo sprintf("var %s = %s;\n", $_idx, json_encode($_jsP));
+    }
+    ?>
+</script>
